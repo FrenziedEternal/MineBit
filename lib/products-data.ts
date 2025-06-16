@@ -322,6 +322,32 @@ export const productsData = {
     ],
     compatibility: "Minecraft Bedrock 1.21.8x+",
   },
+  18: {
+    name: "ThaiTech Ring",
+    price: 69,
+    tags: ["BP & RP"],
+    category: "แอดออน",
+    author: "BarryAroy",
+    images: [
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ttr/ThaiTech%20Ring%20Pok-8tX3WSXFAVgYKVUk9gC3wlNoSX1Rad.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ttr/Screenshot%20%2817427%29-boUuCjh7CfsmRQLU3ZCGRXM2a0qDAU.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ttr/Screenshot%20%2817428%29-AbESOCaqddKM5JwZYysCJuClAvCMqJ.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ttr/Screenshot%20%2817429%29-CS0OgK3ybHupIyQgR7Jes0jIrAQDHf.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ttr/Screenshot%20%2817430%29-6g4eQoQ9EGUqPrLvHl4pa2lEEEZaoU.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ttr/Screenshot%20%2817431%29-hSn34P2HVAhsZVoF2s9X1Ei6bxEbD5.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ttr/ThaiTech%20Ring-VYTFcBGRtoUzoEPyYHspcA3PX73Vw5.mp4",
+    ],
+    description: "วงแหวนลายไทยเรืองแสงส่องสว่างแดงฉาน ว่ากันว่าวงแหวนนี้ไม่ชอบให้ผู้สวมใส่นอนลาบลง",
+    features: [
+      "เป็นชุดเกราะสวมใส่ท่อนไหนก็ได้เช่น หัว ตัว ขา เท้า",
+      "ไม่ใช้ player.json ในรีซอสแพ็ค",
+      "รองรับอนิเมชั่นอื่นๆเช่น Actions & Stuff",
+      "เรืองแสงในที่มืด",
+      "เปลี่ยนรูปวงแหวนได้หากลูกค้ามีมาให้",
+      "ทำเป็นสกินชุดเกราะในตัวเกมได้",
+    ],
+    compatibility: "Minecraft Bedrock 1.21.8x+",
+  },
 }
 
 // ข้อมูลหมวดหมู่
@@ -330,7 +356,7 @@ export const categoriesData = {
     name: "แอดออน",
     description: "เพิ่มฟีเจอร์ใหม่และความสามารถพิเศษให้กับเกม Minecraft",
     availableTags: ["BP", "BP & RP"],
-    productIds: [17, 14, 5, 4, 1],
+    productIds: [18, 17, 14, 5, 4, 1],
   },
   "resource-packs": {
     name: "รีซอสแพ็ค",
