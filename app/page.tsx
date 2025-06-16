@@ -16,7 +16,7 @@ const categories = [
     name: "แอดออน",
     description: "เพิ่มฟีเจอร์ใหม่ให้กับเกม",
     icon: Puzzle,
-    count: 5,
+    count: 6,
     gradient: "from-red-500 to-pink-600",
   },
   {
