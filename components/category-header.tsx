@@ -39,14 +39,16 @@ export function CategoryHeader({ navigateBack, categoryName }: CategoryHeaderPro
         </div>
       </header>
 
-      {/* Breadcrumb */}
-      <div className="flex items-center space-x-2 mb-8">
-        <button onClick={navigateBack} className="text-red-400 hover:text-red-300 flex items-center cursor-pointer">
-          <ArrowLeft className="w-4 h-4 mr-1" />
-          ย้อนกลับ
-        </button>
-        <span className="text-gray-500">/</span>
-        <span className="text-white">{categoryName}</span>
+      <div className="container mx-auto px-4 py-8">
+        {/* Breadcrumb */}
+        <div className="flex items-center space-x-2 mb-8">
+          <button onClick={navigateBack} className="text-red-400 hover:text-red-300 flex items-center cursor-pointer">
+            <ArrowLeft className="w-4 h-4 mr-1" />
+            ย้อนกลับ
+          </button>
+          <span className="text-gray-500">/</span>
+          <span className="text-white">{categoryName}</span>
+        </div>
       </div>
     </>
   )

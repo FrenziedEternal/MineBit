@@ -152,15 +152,48 @@ export function ImageGallery({ images, productName, className }: ImageGalleryPro
           onKeyDown={handleKeyDown}
           tabIndex={0}
         >
-          {/* Close Button */}
-          <Button
-            variant="outline"
-            size="sm"
-            className="absolute top-4 right-4 z-10 bg-black/50 border-white/20 text-white hover:bg-white/10"
-            onClick={closeModal}
+          {/* Modal Image */}
+          <div
+            className="relative max-w-4xl max-h-[80vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
           >
-            <X className="w-4 h-4" />
-          </Button>
+            {/* Close Button */}
+            <Button
+              variant="outline"
+              size="sm"
+              className="absolute top-2 right-2 z-20 bg-black/70 border-white/30 text-white hover:bg-white/20 rounded-full w-8 h-8 p-0"
+              onClick={closeModal}
+            >
+              <X className="w-4 h-4" />
+            </Button>
+            {isVideo(images[modalImageIndex]) ? (
+              <video
+                src={images[modalImageIndex]}
+                className="max-w-full max-h-full object-contain rounded-lg"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+              />
+            ) : (
+              <SimpleImage
+                src={images[modalImageIndex] || "/placeholder.svg"}
+                alt={`${productName} - รูปที่ ${modalImageIndex + 1}`}
+                width={800}
+                height={600}
+                className="max-w-full max-h-full object-contain rounded-lg"
+                priority
+                loading="eager"
+                sizes="80vw"
+              />
+            )}
+
+            {/* Modal Image Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full">
+              {modalImageIndex + 1} / {images.length}
+            </div>
+          </div>
 
           {/* Navigation Buttons */}
           {images.length > 1 && (
@@ -190,40 +223,6 @@ export function ImageGallery({ images, productName, className }: ImageGalleryPro
               </Button>
             </>
           )}
-
-          {/* Modal Image */}
-          <div
-            className="relative max-w-4xl max-h-[80vh] w-full h-full flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {isVideo(images[modalImageIndex]) ? (
-              <video
-                src={images[modalImageIndex]}
-                className="max-w-full max-h-full object-contain rounded-lg"
-                controls
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            ) : (
-              <SimpleImage
-                src={images[modalImageIndex] || "/placeholder.svg"}
-                alt={`${productName} - รูปที่ ${modalImageIndex + 1}`}
-                width={800}
-                height={600}
-                className="max-w-full max-h-full object-contain rounded-lg"
-                priority
-                loading="eager"
-                sizes="80vw"
-              />
-            )}
-
-            {/* Modal Image Counter */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/70 text-white px-4 py-2 rounded-full">
-              {modalImageIndex + 1} / {images.length}
-            </div>
-          </div>
 
           {/* Thumbnail Strip in Modal */}
           {images.length > 1 && (
