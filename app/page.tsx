@@ -1,311 +1,237 @@
 "use client"
 
+import { useState, useMemo } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Heart, Zap, Map, Code, Puzzle, Smartphone, Shuffle, Globe } from "lucide-react"
+import { Filter, Grid, List, X, Info } from "lucide-react"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useScrollRestoration } from "@/hooks/use-scroll-restoration"
-import { ImageWithSkeleton } from "@/components/image-with-skeleton"
-import { getFeaturedProducts } from "@/lib/products-data"
+import { CategoryHeader } from "@/components/category-header"
+import { ProductGrid } from "@/components/product-grid"
+import { categoriesData, getProductsByCategory } from "@/lib/products-data"
 import { Footer } from "@/components/footer"
 
-const categories = [
-  {
-    id: "addons",
-    name: "แอดออน",
-    description: "เพิ่มฟีเจอร์ใหม่ให้กับเกม",
-    icon: Puzzle,
-    count: 6,
-    gradient: "from-red-500 to-pink-600",
-  },
-  {
-    id: "resource-packs",
-    name: "รีซอสแพ็ค",
-    description: "เปลี่ยนการแสดงผลภาพ",
-    icon: Zap,
-    count: 1,
-    gradient: "from-red-600 to-orange-500",
-  },
-  {
-    id: "maps",
-    name: "แมพ",
-    description: "โลกและสิ่งก่อสร้าง",
-    icon: Map,
-    count: 2,
-    gradient: "from-red-500 to-red-700",
-  },
-  {
-    id: "commands",
-    name: "คอมมานด์",
-    description: "คำสั่งและระบบพื้นฐานทั่วไป",
-    icon: Code,
-    count: 3,
-    gradient: "from-pink-500 to-red-600",
-  },
-  {
-    id: "apps",
-    name: "แอพเสริม",
-    description: "เครื่องมือช่วยเหลือนอกเกม",
-    icon: Smartphone,
-    count: 3,
-    gradient: "from-red-700 to-red-900",
-  },
-  {
-    id: "websites",
-    name: "เว็บไซต์",
-    description: "ระบบเว็บไซต์ต่างๆตามความชอบ",
-    icon: Globe,
-    count: 2,
-    gradient: "from-red-500 to-red-800",
-  },
-]
+// คำอธิบายแท็ก
+const tagDescriptions = {
+  BP: "Behavior Pack - แอดออนที่ใช้แค่แพ็คดาต้าหรือ Behavior Pack เท่านั้น",
+  "BP & RP": "Behavior Pack & Resource Pack - แอดออนที่ใช้ทั้งแพ็คดาต้าและแพ็คภาพ",
+  RP: "Resource Pack - แพ็คที่เปลี่ยนเท็กซ์เจอร์และภาพในเกม",
+  Map: "แมพ - โลกและสถานที่ใหม่สำหรับการผจญภัย",
+  CMD: "Command - คำสั่งและฟังก์ชันพิเศษ",
+  APP: "Application - แอพพลิเคชันเสริมนอกเกม",
+  WEB: "Website - เว็บไซต์รูปแบบต่างๆที่สั่งทำ หรือเอกลักษณ์เฉพาะตามที่ลงขาย",
+}
 
-export default function HomePage() {
-  useScrollRestoration()
+export default function CategoryPage({ params }: { params: { slug: string } }) {
+  const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [sortBy, setSortBy] = useState("newest")
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
+  const [showTagInfo, setShowTagInfo] = useState(false)
 
-  // ใช้ข้อมูลจาก products-data.ts
-  const featuredProducts = getFeaturedProducts()
+  const category = categoriesData[params.slug as keyof typeof categoriesData]
+  const products = getProductsByCategory(params.slug)
+  const { navigateBack } = useScrollRestoration()
 
-  const randomizeCategory = () => {
-    const categoryIds = ["addons", "resource-packs", "maps", "commands", "apps", "websites"]
-    const randomIndex = Math.floor(Math.random() * categoryIds.length)
-    const randomCategory = categoryIds[randomIndex]
+  // รวบรวมแท็กทั้งหมดในหมวดนี้
+  const availableTags = useMemo(() => {
+    if (!category) return []
+    return category.availableTags || []
+  }, [category])
 
-    // บันทึกตำแหน่งัจจุบันก่อนไปหน้าอื่น
-    const currentPosition = window.scrollY
-    sessionStorage.setItem("homepage-scroll-position", currentPosition.toString())
+  // กรองและเรียงสินค้า
+  const filteredAndSortedProducts = useMemo(() => {
+    if (!products) return []
 
-    // นำทางไปยังหมวดหมู่ที่สุ่มได้
-    window.location.href = `/category/${randomCategory}`
+    let filtered = products
+
+    // กรองตามแท็ก
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter((product) => selectedTags.some((tag) => product.tags.includes(tag)))
+    }
+
+    // เรียงลำดับ
+    switch (sortBy) {
+      case "price-low":
+        return [...filtered].sort((a, b) => a.price - b.price)
+      case "price-high":
+        return [...filtered].sort((a, b) => b.price - a.price)
+      case "name":
+        return [...filtered].sort((a, b) => a.name.localeCompare(b.name))
+      default:
+        return filtered
+    }
+  }, [products, selectedTags, sortBy])
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags((prev) => (prev.includes(tag) ? prev.filter((t) => t !== tag) : [...prev, tag]))
   }
 
-  const handleLinkClick = () => {
-    // บันทึกตำแหน่งปัจจุบันก่อนไปหน้าอื่น
-    const currentPosition = window.scrollY
-    sessionStorage.setItem("homepage-scroll-position", currentPosition.toString())
+  const clearFilters = () => {
+    setSelectedTags([])
+  }
+
+  if (!category) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-red-400 mb-4">ไม่พบหมวดหมู่</h1>
+          <Link href="/">
+            <Button className="bg-red-600 hover:bg-red-700">กลับหน้าหลัก</Button>
+          </Link>
+        </div>
+      </div>
+    )
   }
 
   return (
-    <>
-      {/* Structured Data for Homepage */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: "MineBit Store - หน้าหลัก",
-            description: "ร้านขายแอดออน แมพ รีซอสแพ็ค คอมมานด์ และแอพเสริม Minecraft Bedrock คุณภาพสูง",
-            url: "https://minebit-store.vercel.app",
-            mainEntity: {
-              "@type": "ItemList",
-              name: "หมวดหมู่สินค้า MineBit Store",
-              itemListElement: categories.map((category, index) => ({
-                "@type": "ListItem",
-                position: index + 1,
-                name: category.name,
-                description: category.description,
-                url: `https://minebit-store.vercel.app/category/${category.id}`,
-              })),
-            },
-            breadcrumb: {
-              "@type": "BreadcrumbList",
-              itemListElement: [
-                {
-                  "@type": "ListItem",
-                  position: 1,
-                  name: "หน้าหลัก",
-                  item: "https://minebit-store.vercel.app",
-                },
-              ],
-            },
-          }),
-        }}
-      />
+    <div className="flex flex-col min-h-screen bg-black text-white">
+      {/* Header */}
+      <CategoryHeader navigateBack={navigateBack} categoryName={category.name} />
 
-      <div className="flex flex-col min-h-screen bg-black text-white">
-        {/* Header */}
-        <header className="border-b border-red-900/30 bg-black/50 backdrop-blur-sm sticky top-0 z-50">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center space-x-2">
-                <ImageWithSkeleton
-                  src="https://xv1t4wfzjkn6kzdb.public.blob.vercel-storage.com/logo/IMG_0699-RRFqZDmOBPBuboVbW5g0rj0XhGf0KN.png"
-                  alt="MineBit Store - ร้านขายของ Minecraft Bedrock ของไทย"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8"
-                  priority
-                  loading="eager"
-                  sizes="32px"
-                />
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                  MineBit Store
-                </h1>
-              </Link>
-              <Link href="/favorites" onClick={handleLinkClick}>
-                <Button className="bg-red-600 hover:bg-red-700 text-white">
-                  <Heart className="w-4 h-4 mr-2" />
-                  รายการที่ชอบ
-                </Button>
-              </Link>
+      <div className="container mx-auto px-4 pb-8">
+        {/* Sort Control */}
+        <div className="mb-6">
+          <Select value={sortBy} onValueChange={setSortBy}>
+            <SelectTrigger className="w-48 bg-gray-900/50 border-red-900/30">
+              <SelectValue placeholder="เรียงตาม" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="newest">ใหม่ล่าสุด</SelectItem>
+              <SelectItem value="price-low">ราคาต่ำ - สูง</SelectItem>
+              <SelectItem value="price-high">ราคาสูง - ต่ำ</SelectItem>
+              <SelectItem value="name">ชื่อ A-Z</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Category Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+              {category.name}
+            </span>
+          </h1>
+          <p className="text-gray-300 text-lg max-w-2xl">{category.description}</p>
+        </div>
+
+        {/* Tags Filter */}
+        {availableTags.length > 0 && (
+          <div className="mb-6">
+            <div className="flex items-center gap-3 mb-3">
+              <h3 className="text-lg font-semibold text-red-400">กรองตามแท็ก:</h3>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowTagInfo(!showTagInfo)}
+                className="border-red-900/30 text-gray-400 hover:bg-red-500/10"
+              >
+                <Info className="w-4 h-4 mr-1" />
+                เกร็ดความรู้
+              </Button>
             </div>
-          </div>
-        </header>
 
-        {/* Hero Section */}
-        <section className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-black/50"></div>
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fillRule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%2523dc2626%22%20fillOpacity%3D%220.1%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="text-center max-w-4xl mx-auto">
-              <h2 className="text-5xl md:text-7xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
-                  MineBit
-                </span>
-                <br />
-                <span className="text-white">Store</span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                ร้านจำหน่ายสินค้าในเกม Minecraft Bedrock ในไทยที่คัดสรรสินค้าคุณภาพสูง พร้อมราคาย่อมเยาเป็นมิตรกับลูกค้า
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-8 py-3"
-                  onClick={randomizeCategory}
-                >
-                  <Shuffle className="w-5 h-5 mr-2" />
-                  สุ่มหมวดหมู่
-                </Button>
-                <Link href="/how-to-order" onClick={handleLinkClick}>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-red-500 text-red-400 hover:bg-red-500/10 px-8 py-3"
-                  >
-                    วิธีสั่งซื้อ
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Categories */}
-        <section className="py-16 bg-gray-900/30">
-          <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">หมวดหมู่สินค้า</span>
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categories.map((category) => {
-                const IconComponent = category.icon
-                return (
-                  <Link key={category.id} href={`/category/${category.id}`} onClick={handleLinkClick}>
-                    <Card className="bg-gray-900/50 border-red-900/30 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group cursor-pointer">
-                      <CardContent className="p-6">
-                        <div className="flex items-center space-x-4 mb-4">
-                          <div
-                            className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                          >
-                            <IconComponent className="w-6 h-6 text-white" />
-                          </div>
-                          <div>
-                            <h4 className="text-xl font-semibold text-white group-hover:text-red-400 transition-colors">
-                              {category.name}
-                            </h4>
-                            <p className="text-gray-400 text-sm">{category.count} รายการ</p>
-                          </div>
-                        </div>
-                        <p className="text-gray-300 text-sm">{category.description}</p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                )
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Featured Products */}
-        <section className="py-16">
-          <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">สินค้าแนะนำ</span>
-            </h3>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-              {featuredProducts.map((product) => (
-                <Link key={product.id} href={`/product/${product.id}`} onClick={handleLinkClick}>
-                  <Card className="bg-gray-900/50 border-red-900/30 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group cursor-pointer overflow-hidden">
-                    <div className="relative h-48">
-                      <ImageWithSkeleton
-                        src={product.images[0] || "/placeholder.svg"}
-                        alt={`${product.name} - ${product.category} สำหรับ Minecraft Bedrock`}
-                        width={300}
-                        height={200}
-                        className="w-full h-full group-hover:scale-105 transition-transform duration-300"
-                        loading="lazy"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                      />
-                      <div className="absolute top-2 right-2 flex gap-1">
-                        {product.tags.map((tag) => (
-                          <Badge key={tag} className="bg-red-600/80 text-white text-xs">
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
+            {/* Tag Info Panel */}
+            {showTagInfo && (
+              <div className="mb-4 p-4 bg-gray-900/50 border border-red-900/30 rounded-lg">
+                <h4 className="text-red-400 font-semibold mb-3">🎓 เกร็ดความรู้เกี่ยวกับแท็ก:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                  {availableTags.map((tag) => (
+                    <div key={tag} className="flex items-start space-x-2">
+                      <Badge className="bg-red-600/80 text-white text-xs flex-shrink-0">{tag}</Badge>
+                      <span className="text-gray-300">{tagDescriptions[tag as keyof typeof tagDescriptions]}</span>
                     </div>
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-start mb-2">
-                        <h4 className="text-lg font-semibold text-white group-hover:text-red-400 transition-colors">
-                          {product.name}
-                        </h4>
-                        <span className="text-red-400 font-bold text-lg">฿{product.price}</span>
-                      </div>
-                      <p className="text-gray-400 text-sm">{product.category}</p>
-                    </CardContent>
-                  </Card>
-                </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div className="flex flex-wrap gap-2">
+              {availableTags.map((tag) => (
+                <Button
+                  key={tag}
+                  variant="outline"
+                  size="sm"
+                  onClick={() => toggleTag(tag)}
+                  className={`${
+                    selectedTags.includes(tag)
+                      ? "bg-red-600 border-red-600 text-white"
+                      : "border-red-900/30 text-gray-400 hover:bg-red-500/10"
+                  }`}
+                >
+                  {tag}
+                </Button>
+              ))}
+              {selectedTags.length > 0 && (
+                <Button variant="outline" size="sm" onClick={clearFilters} className="border-red-900/30 text-gray-400">
+                  <X className="w-4 h-4 mr-1" />
+                  ล้างตัวกรอง
+                </Button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Selected Tags Display */}
+        {selectedTags.length > 0 && (
+          <div className="mb-6">
+            <p className="text-gray-400 text-sm mb-2">กรองแล้ว: {filteredAndSortedProducts.length} รายการ</p>
+            <div className="flex flex-wrap gap-2">
+              {selectedTags.map((tag) => (
+                <Badge key={tag} className="bg-red-600/80 text-white">
+                  {tag}
+                  <button onClick={() => toggleTag(tag)} className="ml-1 hover:text-red-200">
+                    <X className="w-3 h-3" />
+                  </button>
+                </Badge>
               ))}
             </div>
           </div>
-        </section>
+        )}
 
-        {/* Reviews Section */}
-        <section className="py-16 bg-gray-900/30">
-          <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">รีวิวจากลูกค้า</span>
-            </h3>
-
-            <div className="max-w-6xl mx-auto">
-              <div className="bg-gray-900/50 border border-red-900/30 rounded-lg overflow-hidden">
-                <iframe
-                  src="https://minebit-reviews.vercel.app/reviews"
-                  className="w-full h-96 md:h-[500px] lg:h-[600px]"
-                  title="MineBit Store Reviews"
-                  loading="lazy"
-                  style={{
-                    border: "none",
-                    background: "transparent",
-                  }}
-                  onError={(e) => {
-                    console.log("iframe failed to load:", e)
-                  }}
-                />
-              </div>
-            </div>
+        {/* Controls */}
+        <div className="flex items-center space-x-4 mb-8">
+          <div className="flex items-center space-x-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setViewMode("grid")}
+              className={`${
+                viewMode === "grid" ? "bg-red-600 border-red-600 text-white" : "border-red-900/30 text-gray-400"
+              }`}
+            >
+              <Grid className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setViewMode("list")}
+              className={`${
+                viewMode === "list" ? "bg-red-600 border-red-600 text-white" : "border-red-900/30 text-gray-400"
+              }`}
+            >
+              <List className="w-4 h-4" />
+            </Button>
           </div>
-        </section>
+        </div>
 
-        {/* Footer */}
-        <Footer />
+        {/* Products Grid/List */}
+        {filteredAndSortedProducts.length === 0 && selectedTags.length > 0 ? (
+          <div className="text-center py-16">
+            <Filter className="w-16 h-16 text-gray-600 mx-auto mb-4" />
+            <h2 className="text-2xl font-bold text-gray-400 mb-2">ไม่พบสินค้า</h2>
+            <p className="text-gray-500 mb-4">ลองเปลี่ยนเงื่อนไขการกรองหรือล้างตัวกรอง</p>
+            <Button onClick={clearFilters} className="bg-red-600 hover:bg-red-700">
+              ล้างตัวกรอง
+            </Button>
+          </div>
+        ) : (
+          <ProductGrid products={filteredAndSortedProducts} viewMode={viewMode} />
+        )}
       </div>
-    </>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   )
 }
