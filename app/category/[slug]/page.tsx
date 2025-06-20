@@ -89,7 +89,7 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
       {/* Header */}
       <CategoryHeader navigateBack={navigateBack} categoryName={category.name} />
 
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 pb-8">
         {/* Sort Control */}
         <div className="mb-6">
           <Select value={sortBy} onValueChange={setSortBy}>
