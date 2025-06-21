@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Heart, Zap, Map, Code, Puzzle, Smartphone, Shuffle, Globe } from "lucide-react"
+import { Heart, Zap, Map, Code, Puzzle, Smartphone, FileText, Globe } from "lucide-react"
 import { useScrollRestoration } from "@/hooks/use-scroll-restoration"
 import { ImageWithSkeleton } from "@/components/image-with-skeleton"
 import { getFeaturedProducts } from "@/lib/products-data"
@@ -172,14 +172,15 @@ export default function HomePage() {
                 ร้านจำหน่ายสินค้าในเกม Minecraft Bedrock ในไทยที่คัดสรรสินค้าคุณภาพสูง พร้อมราคาย่อมเยาเป็นมิตรกับลูกค้า
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-8 py-3"
-                  onClick={randomizeCategory}
-                >
-                  <Shuffle className="w-5 h-5 mr-2" />
-                  สุ่มหมวดหมู่
-                </Button>
+                <Link href="/terms-of-service" onClick={handleLinkClick}>
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-8 py-3"
+                  >
+                    <FileText className="w-5 h-5 mr-2" />
+                    ข้อกำหนดการใช้บริการ
+                  </Button>
+                </Link>
                 <Link href="/how-to-order" onClick={handleLinkClick}>
                   <Button
                     size="lg"
