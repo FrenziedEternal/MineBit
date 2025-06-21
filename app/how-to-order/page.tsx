@@ -73,15 +73,12 @@ export default function HowToOrderPage() {
             ย้อนกลับ
           </button>
           <span className="text-gray-500">/</span>
-          <span className="text-white">วิธีสั่งซื้อ</span>
+          <span className="text-white">สั่งซื้อ</span>
         </div>
 
         {/* Page Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">วิธีสั่งซื้อ</span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">ขั้นตอนง่าย ๆ เพียง 4 ขั้นตอนเพื่อสั่งซื้อสินค้าจากเรา</p>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">สั่งซื้อง่ายๆเพียง 4 ขั้นตอนเพื่อรับสินค้าจากเรา</p>
         </div>
 
         {/* Steps */}
