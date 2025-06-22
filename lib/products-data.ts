@@ -23,7 +23,7 @@ export const productsData = {
       "อักษรลอยสวยงามและปรับแต่งได้",
       "กระดานผู้นำแบบเรียลไทม์",
     ],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   2: {
     name: "ยังไม่มีสินค้า",
@@ -38,7 +38,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   3: {
     name: "Savage Impaler",
@@ -56,7 +56,7 @@ export const productsData = {
     ],
     description: "รีซอสมองทะลุอัพเกรดที่มาพร้อมกับการเจาะระบบห้ามใช้รีซอสแพ็คนอกในกรณีที่บางแมพ หรือบางเซิฟเวอร์ห้ามใช้รีซอสแพ็คนอก",
     features: ["ทะลุการป้องกันห้ามใช้รีซอสแพ็คนอกแมพ", "มองเห็น entity ทะลุกำแพงได้ทุกรูปแบบ"],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   4: {
     name: "Player Honor",
@@ -74,7 +74,7 @@ export const productsData = {
     ],
     description: "แก้ไขชื่อผู้เล่นและยศได้อย่างอิสระ และมีระบบแบนคำหยาบคายต่างๆในแชท",
     features: ["แก้ไขชื่อผู้เล่นได้อิสระ", "แก้ไขยศของผู้เล่นได้อิสระ", "แบนคำหยาบคายในการพิมพ์แชท", "การแสดงผลแชทที่ดีขึ้นเพื่อพิมพ์ข้อความ"],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   5: {
     name: "Frenzied Crafting",
@@ -97,7 +97,7 @@ export const productsData = {
       "กำหนดจำนวนไอเท็มคราฟได้",
       "ทำให้ชีวิตนักฟาร์มในโลกของคุณยากรันทดขึ้น",
     ],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   6: {
     name: "ยังไม่มีสินค้า",
@@ -112,7 +112,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   7: {
     name: "ยังไม่มีสินค้า",
@@ -127,7 +127,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   8: {
     name: "ยังไม่มีสินค้า",
@@ -142,7 +142,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   9: {
     name: "ยังไม่มีสินค้า",
@@ -157,7 +157,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   10: {
     name: "ยังไม่มีสินค้า",
@@ -172,7 +172,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   11: {
     name: "ยังไม่มีสินค้า",
@@ -187,7 +187,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   12: {
     name: "ยังไม่มีสินค้า",
@@ -202,7 +202,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   13: {
     name: "ยังไม่มีสินค้า",
@@ -217,7 +217,7 @@ export const productsData = {
     ],
     description: "...",
     features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   14: {
     name: "Gacha Plus",
@@ -237,7 +237,7 @@ export const productsData = {
     ],
     description: "ระบบสุ่มกาชาและเรตการสุ่มสุดเฟี้ยว พร้อมไอเท็มการันตีการสุ่ม",
     features: ["กำหนดเรตการสุ่มอย่างเฟี้ยว", "ดูเรตการสุ่มไอเท็มแต่ละหมวดได้", "สุ่มกาชาได้ตามเรตโดยไม่บัคค่า % แน่นอน"],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   15: {
     name: "รับทำเว็บไซต์",
@@ -320,7 +320,7 @@ export const productsData = {
       "หน้าอกเด้งดึ๋งๆใช้เพื่อข่มขวัญคนอื่นได้",
       "ทำเป็นสกินชุดเกราะในตัวเกมได้",
     ],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
   18: {
     name: "ThaiTech Ring",
@@ -346,7 +346,77 @@ export const productsData = {
       "เปลี่ยนรูปวงแหวนได้หากลูกค้ามีมาให้",
       "ทำเป็นสกินชุดเกราะในตัวเกมได้",
     ],
-    compatibility: "Minecraft Bedrock 1.21.8x+",
+    compatibility: "Minecraft Bedrock 1.21.9x+",
+  },
+  19: {
+    name: "BitCommands",
+    price: 100,
+    tags: ["BP"],
+    category: "แอดออน",
+    author: "BarryAroy",
+    images: [
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/bcs/bcs_pok-Zzc2sy9W4w5leXSI8m8c4piOewQAH7.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/bcs/Screenshot%20%2817544%29-kJ6wZBs8xf8msCx7ZEyqmjmBSm2EMx.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/bcs/Screenshot%20%2817545%29-ME4XjA8hHFW19kge3ShBQBk0ikhiF9.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/bcs/Screenshot%20%2817546%29-1ceW21UHt5LwtwaF1d49ZP3i25mBDU.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/bcs/Screenshot%20%2817547%29-ww4FqYHu3FDDTBOQTfR6i8jryZXJkf.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/bcs/Screenshot%20%2817548%29-J5l4EK0vpIyUKLJpsNVs4UFRTABQAr.png",
+    ],
+    description: "เพิ่มคอมมานใหม่อย่างอิสระลงในโลกของท่าน เพื่อความสะดวกต่อการใช้งานต่างๆ",
+    features: [
+      "กำหนดได้หลายคอมมาน",
+      "กำหนดได้ว่าแต่ละคอมมานใครใช้ได้บ้าง",
+      "มีข้อความที่กำหนดแสดงเมื่อเข้าออกโลกใหม่",
+      "ใช้งานง่ายๆเช่น /hub หรือ /mb:hub",
+    ],
+    compatibility: "Minecraft Bedrock 1.21.9x+",
+  },
+  20: {
+    name: "MineBit Display",
+    price: 300,
+    tags: ["BP"],
+    category: "แอดออน",
+    author: "BarryAroy",
+    images: [
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/dhs/vault1_3-L9GsPkR9tVsXlDxWmfDCagRTJdN2Yo.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/dhs/Screenshot%20%2817527%29-5LRWrBT80TaGVFTngHxlTFYGJG0hR9.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/dhs/Screenshot%20%2817530%29-Bez8b37vTxZzutzaON5Z1wfBmwTs5O.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/dhs/Untitled%20video%20-%20Made%20with%20Clipchamp%20%283%29-VNEM3Wqng4HqNySPGpetzEgAuAZMfa.mp4",
+    ],
+    description: "ไม่ต้องมีรีซอสแพ็คก็สามารถแสดงจำนวนดาเมจที่ทำได้และอื่นๆมากมาย",
+    features: [
+      "ไม่ใช้รีซอสแพ็คใดๆ",
+      "แสดงดาเมจที่ทำได้ (จำนวนเท่าที่เกมทำได้ 2.1 พันล้าน)",
+      "แสดงจำนวนเลือดที่ผื้นฟูได้ (จำนวนเท่าที่เกมทำได้ 2.1 พันล้าน)",
+      "แสดงเลือด และ ชื่อบนหัว",
+      "แบนคำหยาบในแชทเกม",
+      "ยศบนหัว และ ในแชทเกม",
+    ],
+    compatibility: "Minecraft Bedrock 1.21.9x+",
+  },
+  21: {
+    name: "Ponytail Hairstyle",
+    price: 75,
+    tags: ["BP & RP"],
+    category: "แอดออน",
+    author: "BarryAroy & Thaideity",
+    images: [
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ph1/pony_pok-v00NtVB6Y7u9cFcb1m5R8o3jDHux8s.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ph1/Screenshot%20%2817500%29-MoopmdrmBlgPeAAbrydKs2LQqOhsGx.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ph1/Screenshot%20%2817534%29-2f8tLiyVwR9Gf9GsrENoqZF86e2o6H.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ph1/Screenshot%20%2817538%29-H5h3QBWiyoENCtxk4fI66nfca6aROI.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ph1/Screenshot%20%2817539%29-lBeL3tIalrf60jJzuB75hqo0kC3Nbc.png",
+      "https://5zj87vbg33lydofm.public.blob.vercel-storage.com/Pics/Addon/ph1/Untitled%20video%20-%20Made%20with%20Clipchamp%20%288%29-UX9qOeXWGzEHQ5taIxMcHi8QUu6JSo.mp4",
+    ],
+    description: "ผมหางม้าปลิวไสวยื่นออกมา ให้ออร่าจับดุจองค์ราชินีจันทร์เพ็ญ",
+    features: [
+      "ออร่าจับดุจองค์ราชินี",
+      "มีอนิเมชั่นเมื่อเคลื่อนไหวตัวละคร",
+      "กำหนดตำแหน่งผมได้",
+      "กำหนดอนิเมชั่นได้",
+      "เมื่อก้มหรือเงยหน้าผมไม่บัคสิงเข้าตัว",
+    ],
+    compatibility: "Minecraft Bedrock 1.21.9x+",
   },
 }
 
@@ -356,7 +426,7 @@ export const categoriesData = {
     name: "แอดออน",
     description: "เพิ่มฟีเจอร์ใหม่และความสามารถพิเศษให้กับเกม Minecraft",
     availableTags: ["BP", "BP & RP"],
-    productIds: [18, 17, 14, 5, 4, 1],
+    productIds: [21, 20, 19, 18, 17, 14, 5, 4, 1],
   },
   "resource-packs": {
     name: "รีซอสแพ็ค",
