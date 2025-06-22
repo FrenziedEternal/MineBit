@@ -50,7 +50,7 @@ export function ProductGrid({ products, viewMode }: ProductGridProps) {
             <Card className="bg-gray-900/50 border-red-900/30 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group cursor-pointer overflow-hidden">
               <div className="relative h-48">
                 <SimpleImage
-                  src={product.images?.[0] || "/placeholder.svg?height=200&width=300"}
+                  src={product.images?.[0] || "/placeholder.svg"}
                   alt={product.name}
                   width={300}
                   height={200}
@@ -82,7 +82,7 @@ export function ProductGrid({ products, viewMode }: ProductGridProps) {
                 <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
                   <div className="relative flex-shrink-0 w-full sm:w-32 md:w-40 lg:w-48 h-32 sm:h-24 md:h-28 lg:h-32">
                     <SimpleImage
-                      src={product.images?.[0] || "/placeholder.svg?height=200&width=300"}
+                      src={product.images?.[0] || "/placeholder.svg"}
                       alt={product.name}
                       width={192}
                       height={128}
