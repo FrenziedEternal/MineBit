@@ -1,4 +1,4 @@
-# MineBit Store - Robots.txt
+# MineBit Store - Robots.txt - Optimized for SEO
 User-agent: *
 Allow: /
 
@@ -8,13 +8,14 @@ Sitemap: https://minebit-store.vercel.app/sitemap.xml
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
 
-# Allow all search engines to index images
+# Allow all search engines to index images and videos
 User-agent: Googlebot-Image
+Allow: /images/
 Allow: /logo.png
 Allow: /placeholder.svg
 
-# Allow all search engines to index videos
 User-agent: Googlebot-Video
+Allow: /videos/
 Allow: /
 
 # Specific rules for major search engines
@@ -52,5 +53,19 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MauiBot
+Disallow: /
+
 # Host directive
 Host: https://minebit-store.vercel.app
+
+# Additional SEO directives
+User-agent: *
+Allow: /category/
+Allow: /product/
+Allow: /how-to-order
+Allow: /terms-of-service
+Allow: /favorites
