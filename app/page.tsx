@@ -16,7 +16,7 @@ const categories = [
     name: "แอดออน",
     description: "เพิ่มฟีเจอร์ใหม่ให้กับเกม",
     icon: Puzzle,
-    count: 9,
+    count: 10,
     gradient: "from-red-500 to-pink-600",
   },
   {
@@ -185,7 +185,7 @@ export default function HomePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-red-500 text-red-400 hover:bg-red-500/10 px-8 py-3"
+                    className="border-red-500 text-red-400 hover:bg-red-500/10 px-8 py-3 bg-transparent"
                   >
                     วิธีสั่งซื้อ
                   </Button>
