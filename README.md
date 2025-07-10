@@ -1,2 +1,0 @@
-# MineBit
-MineBit_Store
