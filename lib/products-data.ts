@@ -1,10 +1,10 @@
 // ข้อมูลสินค้าทั้งหมด - แก้ไขที่นี่จุดเดียวแล้วมีผลทุกหน้า
 export const productsData = {
   1: {
-    name: "Luxury Leaderboard",
+    nameKey: "product.1.name",
     price: 300,
     tags: ["BP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/luxury-leaderboard-cover.png",
@@ -15,32 +15,32 @@ export const productsData = {
       "/images/luxury-leaderboard5.png",
       "/images/luxury-leaderboard6.png",
     ],
-    description: "อักษรลอยและกระดานผู้นำสุดเฟี้ยวไม่เหมือนที่ไหน ระบบที่จะทำให้เซิร์ฟเวอร์ของคุณดูโปรและน่าประทับใจมากขึ้น",
-    features: [
-      "ป้องกัน kill @e",
-      "ไม่ใช้ Resourcepack",
-      "ป้องกัน Player Offline ในกระดานผู้นำ",
-      "อักษรลอยสวยงามและปรับแต่งได้",
-      "กระดานผู้นำแบบเรียลไทม์",
+    descriptionKey: "product.1.description",
+    featuresKeys: [
+      "product.1.features.0",
+      "product.1.features.1",
+      "product.1.features.2",
+      "product.1.features.3",
+      "product.1.features.4",
     ],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   2: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.2.name",
     price: 999,
     tags: ["Map"],
-    category: "แมพ",
+    category: "Maps",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.2.description",
+    featuresKeys: ["product.2.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   3: {
-    name: "Savage Impaler",
+    nameKey: "product.3.name",
     price: 150,
     tags: ["RP"],
-    category: "รีซอสแพ็ค",
+    category: "Resource Packs",
     author: "BarryAroy",
     images: [
       "/images/savage-impaler-cover.png",
@@ -50,15 +50,15 @@ export const productsData = {
       "/images/savage-impaler4.png",
       "/images/savage-impaler5.png",
     ],
-    description: "รีซอสมองทะลุอัพเกรดที่มาพร้อมกับการเจาะระบบห้ามใช้รีซอสแพ็คนอกในกรณีที่บางแมพ หรือบางเซิฟเวอร์ห้ามใช้รีซอสแพ็คนอก",
-    features: ["ทะลุการป้องกันห้ามใช้รีซอสแพ็คนอกแมพ", "มองเห็น entity ทะลุกำแพงได้ทุกรูปแบบ"],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.3.description",
+    featuresKeys: ["product.3.features.0", "product.3.features.1"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   4: {
-    name: "Player Honor",
+    nameKey: "product.4.name",
     price: 300,
     tags: ["BP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/player-honor-cover.png",
@@ -68,15 +68,15 @@ export const productsData = {
       "/images/player-honor4.png",
       "/images/player-honor5.png",
     ],
-    description: "แก้ไขชื่อผู้เล่นและยศได้อย่างอิสระ และมีระบบแบนคำหยาบคายต่างๆในแชท",
-    features: ["แก้ไขชื่อผู้เล่นได้อิสระ", "แก้ไขยศของผู้เล่นได้อิสระ", "แบนคำหยาบคายในการพิมพ์แชท", "การแสดงผลแชทที่ดีขึ้นเพื่อพิมพ์ข้อความ"],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.4.description",
+    featuresKeys: ["product.4.features.0", "product.4.features.1", "product.4.features.2", "product.4.features.3"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   5: {
-    name: "Frenzied Crafting",
+    nameKey: "product.5.name",
     price: 300,
     tags: ["BP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/frenzied-crafting-cover.png",
@@ -86,108 +86,103 @@ export const productsData = {
       "/images/frenzied-crafting4.png",
       "/images/frenzied-crafting5.png",
     ],
-    description: "กำหนดเปอร์เซ็นต์คราฟไอเท็มสำเร็จ และกำหนดจำนวนไอเท็มในการใช้คราฟได้หลายชิ้นถึงหลักร้อยขึ้นก็ยังได้",
-    features: [
-      "กำหนดบล็อคโต๊ะคราฟได้",
-      "กำหนดเปอร์เซ็นต์ที่จะคราฟไอเท็มสำเร็จได้",
-      "กำหนดจำนวนไอเท็มคราฟได้",
-      "ทำให้ชีวิตนักฟาร์มในโลกของคุณยากรันทดขึ้น",
-    ],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.5.description",
+    featuresKeys: ["product.5.features.0", "product.5.features.1", "product.5.features.2", "product.5.features.3"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   6: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.6.name",
     price: 999,
     tags: ["RP"],
-    category: "รีซอสแพ็ค",
+    category: "Resource Packs",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.6.description",
+    featuresKeys: ["product.6.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   7: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.7.name",
     price: 999,
     tags: ["Map"],
-    category: "แมพ",
+    category: "Maps",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.7.description",
+    featuresKeys: ["product.7.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   8: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.8.name",
     price: 999,
     tags: ["CMD"],
-    category: "คอมมานด์",
+    category: "Commands",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.8.description",
+    featuresKeys: ["product.8.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   9: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.9.name",
     price: 999,
     tags: ["CMD"],
-    category: "คอมมานด์",
+    category: "Commands",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.9.description",
+    featuresKeys: ["product.9.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   10: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.10.name",
     price: 999,
     tags: ["CMD"],
-    category: "คอมมานด์",
+    category: "Commands",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.10.description",
+    featuresKeys: ["product.10.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   11: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.11.name",
     price: 999,
     tags: ["APP"],
-    category: "แอพเสริม",
+    category: "Apps",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.11.description",
+    featuresKeys: ["product.11.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   12: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.12.name",
     price: 999,
     tags: ["APP"],
-    category: "แอพเสริม",
+    category: "Apps",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.12.description",
+    featuresKeys: ["product.12.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   13: {
-    name: "ยังไม่มีสินค้า",
+    nameKey: "product.13.name",
     price: 999,
     tags: ["APP"],
-    category: "แอพเสริม",
+    category: "Apps",
     author: "BarryAroy",
     images: ["/images/nothing_404.png", "/images/nothing_404.png", "/images/nothing_404.png"],
-    description: "...",
-    features: ["..."],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.13.description",
+    featuresKeys: ["product.13.features.0"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   14: {
-    name: "Gacha Plus",
+    nameKey: "product.14.name",
     price: 250,
     tags: ["BP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/gacha-plus-cover.png",
@@ -199,15 +194,15 @@ export const productsData = {
       "/images/gacha-plus5.png",
       "/images/gacha-plus6.png",
     ],
-    description: "ระบบสุ่มกาชาและเรตการสุ่มสุดเฟี้ยว พร้อมไอเท็มการันตีการสุ่ม",
-    features: ["กำหนดเรตการสุ่มอย่างเฟี้ยว", "ดูเรตการสุ่มไอเท็มแต่ละหมวดได้", "สุ่มกาชาได้ตามเรตโดยไม่บัคค่า % แน่นอน"],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.14.description",
+    featuresKeys: ["product.14.features.0", "product.14.features.1", "product.14.features.2"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   15: {
-    name: "รับทำเว็บไซต์",
+    nameKey: "product.15.name",
     price: 350,
     tags: ["WEB"],
-    category: "เว็บไซต์",
+    category: "Websites",
     author: "BarryAroy",
     images: [
       "/images/website-cover.png",
@@ -221,25 +216,25 @@ export const productsData = {
       "/images/website-new8.png",
       "/images/website-new9.png",
     ],
-    description: "รับทำเว็บไซต์รูปแบบต่างๆตามที่บรีฟงาน และตกลงกันไว้",
-    features: [
-      "โดเมนฟรีถาวร",
-      "เชื่อมหน้าเว็บอื่นๆได้",
-      "มีฐานข้อมูลให้ใช้ฟรีถาวร",
-      "กำหนดหลายๆอย่างอิสระ",
-      "หน้าต่างรองรับทุกแพลตฟอร์ม",
-      "กำหนดชื่อในโดเมนได้อิสระ 50 ชื่อ",
-      "ใช้งานสะดวกและเร็วแรง ออกแบบมาดี",
-      "ติดตั้งเป็นแอพได้ในหลายๆแพลตฟอร์ม",
-      "สามารถทำหน้าเว็บที่เข้าได้เฉพาะแอดมิน",
+    descriptionKey: "product.15.description",
+    featuresKeys: [
+      "product.15.features.0",
+      "product.15.features.1",
+      "product.15.features.2",
+      "product.15.features.3",
+      "product.15.features.4",
+      "product.15.features.5",
+      "product.15.features.6",
+      "product.15.features.7",
+      "product.15.features.8",
     ],
-    compatibility: "ทุกแพลตฟอร์ม",
+    compatibility: "All Platforms",
   },
   16: {
-    name: "ระบบรีวิวให้ดาว",
+    nameKey: "product.16.name",
     price: 450,
     tags: ["WEB"],
-    category: "เว็บไซต์",
+    category: "Websites",
     author: "BarryAroy",
     images: [
       "/images/review-system-cover.png",
@@ -248,42 +243,40 @@ export const productsData = {
       "/images/review-system-new3.png",
       "/images/review-system-new4.png",
     ],
-    description: "รับทำเว็บไซต์รูปแบบต่างๆตามที่บรีฟงาน และตกลงกันไว้",
-    features: [
-      "มีฐานข้อมูลให้จัดการและดูแล",
-      "ป้องกันคนนอกคอมเมนท์เล่นได้",
-      "มีหน้าสำหรับแอดมินให้จัดการสิ่งต่างๆ",
-      "นำไปเชื่อม หรือ แสดงในหน้าเว็บอื่นๆได้",
-      "แสดงจำนวนผู้รีวิวทั้งหมดและสรุปให้ละเอียด",
-      "ดึงข้อมูลผู้คอมเม้นท์จากไอดีผู้ใช้ Discord ปลอดภัย",
+    descriptionKey: "product.16.description",
+    featuresKeys: [
+      "product.16.features.0",
+      "product.16.features.1",
+      "product.16.features.2",
+      "product.16.features.3",
+      "product.16.features.4",
+      "product.16.features.5",
     ],
-    compatibility: "ทุกแพลตฟอร์ม",
+    compatibility: "All Platforms",
   },
   17: {
-    name: "Female Core",
+    nameKey: "product.17.name",
     price: 200,
     tags: ["BP & RP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy & Thaideity",
     images: ["/images/female-core-cover.png", "/images/female-core-promo.png", "https://youtu.be/PE3XG_Uvss0"],
-    description: "สกินผู้เล่นมีหน้าอกทรงค่อนข้างกลม พร้อมอนิเมชั่นหน้าอกเด้งอย่างลื่นไหล",
-    features: [
-      "เป็นชุดเกราะสวมใส่ท่อนไหนก็ได้เช่น หัว ตัว ขา เท้า",
-      "ไม่ใช้ player.json ในรีซอสแพ็ค",
-      "รองรับอนิเมชั่นอื่นๆเช่น Actions & Stuff",
-      "รองรับสกินผู้เล่นปกติทั่วไป",
-      "รองรับสกินคมชัด",
-      "หน้าอกไม่เหลี่ยม",
-      "หน้าอกเด้งดึ๋งๆใช้เพื่อข่มขวัญคนอื่นได้",
-      "ทำเป็นสกินชุดเกราะในตัวเกมได้",
+    descriptionKey: "product.17.description",
+    featuresKeys: [
+      "product.17.features.0",
+      "product.17.features.1",
+      "product.17.features.2",
+      "product.17.features.3",
+      "product.17.features.4",
+      "product.17.features.5",
     ],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   18: {
-    name: "ThaiTech Ring",
+    nameKey: "product.18.name",
     price: 69,
     tags: ["BP & RP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/thaitech-ring-cover.png",
@@ -294,22 +287,22 @@ export const productsData = {
       "/images/thaitech-ring5.png",
       "https://youtu.be/sHYUvObW3gU?si=SD8ZvvXH9WctXv0O",
     ],
-    description: "วงแหวนลายไทยเรืองแสงส่องสว่างแดงฉาน ว่ากันว่าวงแหวนนี้ไม่ชอบให้ผู้สวมใส่นอนลาบลง",
-    features: [
-      "เป็นชุดเกราะสวมใส่ท่อนไหนก็ได้เช่น หัว ตัว ขา เท้า",
-      "ไม่ใช้ player.json ในรีซอสแพ็ค",
-      "รองรับอนิเมชั่นอื่นๆเช่น Actions & Stuff",
-      "เรืองแสงในที่มืด",
-      "เปลี่ยนรูปวงแหวนได้หากลูกค้ามีมาให้",
-      "ทำเป็นสกินชุดเกราะในตัวเกมได้",
+    descriptionKey: "product.18.description",
+    featuresKeys: [
+      "product.18.features.0",
+      "product.18.features.1",
+      "product.18.features.2",
+      "product.18.features.3",
+      "product.18.features.4",
+      "product.18.features.5",
     ],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   19: {
-    name: "BitCommands",
+    nameKey: "product.19.name",
     price: 100,
     tags: ["BP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/bitcommands-cover.png",
@@ -319,20 +312,15 @@ export const productsData = {
       "/images/bitcommands4.png",
       "/images/bitcommands5.png",
     ],
-    description: "เพิ่มคอมมานใหม่อย่างอิสระลงในโลกของท่าน เพื่อความสะดวกต่อการใช้งานต่างๆ",
-    features: [
-      "กำหนดได้หลายคอมมาน",
-      "กำหนดได้ว่าแต่ละคอมมานใครใช้ได้บ้าง",
-      "มีข้อความที่กำหนดแสดงเมื่อเข้าออกโลกใหม่",
-      "ใช้งานง่ายๆเช่น /hub หรือ /mb:hub",
-    ],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.19.description",
+    featuresKeys: ["product.19.features.0", "product.19.features.1", "product.19.features.2", "product.19.features.3"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   20: {
-    name: "MineBit Display",
+    nameKey: "product.20.name",
     price: 300,
     tags: ["BP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/minebit-display-cover.png",
@@ -340,22 +328,22 @@ export const productsData = {
       "/images/minebit-display2.png",
       "https://youtu.be/iMyc6eLl-04?si=81k1Ax1iTG9M3wnD",
     ],
-    description: "ไม่ต้องมีรีซอสแพ็คก็สามารถแสดงจำนวนดาเมจที่ทำได้และอื่นๆมากมาย",
-    features: [
-      "ไม่ใช้รีซอสแพ็คใดๆ",
-      "แสดงดาเมจที่ทำได้ (จำนวนเท่าที่เกมทำได้ 2.1 พันล้าน)",
-      "แสดงจำนวนเลือดที่ผื้นฟูได้ (จำนวนเท่าที่เกมทำได้ 2.1 พันล้าน)",
-      "แสดงเลือด และ ชื่อบนหัว",
-      "แบนคำหยาบในแชทเกม",
-      "ยศบนหัว และ ในแชทเกม",
+    descriptionKey: "product.20.description",
+    featuresKeys: [
+      "product.20.features.0",
+      "product.20.features.1",
+      "product.20.features.2",
+      "product.20.features.3",
+      "product.20.features.4",
+      "product.20.features.5",
     ],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   21: {
-    name: "Ponytail Hairstyle",
+    nameKey: "product.21.name",
     price: 75,
     tags: ["BP & RP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy & Thaideity",
     images: [
       "/images/ponytail-cover.png",
@@ -365,21 +353,21 @@ export const productsData = {
       "/images/ponytail4.png",
       "https://youtu.be/8r7KW4dY53M",
     ],
-    description: "ผมหางม้าปลิวไสวยื่นออกมา ให้ออร่าจับดุจองค์ราชินีจันทร์เพ็ญ",
-    features: [
-      "ออร่าจับดุจองค์ราชินี",
-      "มีอนิเมชั่นเมื่อเคลื่อนไหวตัวละคร",
-      "กำหนดตำแหน่งผมได้",
-      "กำหนดอนิเมชั่นได้",
-      "เมื่อก้มหรือเงยหน้าผมไม่บัคสิงเข้าตัว",
+    descriptionKey: "product.21.description",
+    featuresKeys: [
+      "product.21.features.0",
+      "product.21.features.1",
+      "product.21.features.2",
+      "product.21.features.3",
+      "product.21.features.4",
     ],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
   22: {
-    name: "Great Amulets",
+    nameKey: "product.22.name",
     price: 100,
     tags: ["BP & RP"],
-    category: "แอดออน",
+    category: "Add-ons",
     author: "BarryAroy",
     images: [
       "/images/great-amulets-cover.png",
@@ -388,88 +376,150 @@ export const productsData = {
       "/images/great-amulets3.png",
       "https://www.youtube.com/watch?v=YCGUw6LiZmE",
     ],
-    description: "สวมใส่ไอเท็มในช่องเครื่องรางได้ โดยช่องเครื่องรางแยกจากช่องเก็บของในตัว",
-    features: ["สวมใส่ไอเท็มในช่องเครื่องรางได้", "รับความสามารถต่างๆของไอเท็มสวมใส่", "ช่องเครื่องรางแยกจากช่องเก็บของในตัว"],
-    compatibility: "Minecraft Bedrock 1.21.9x+",
+    descriptionKey: "product.22.description",
+    featuresKeys: ["product.22.features.0", "product.22.features.1", "product.22.features.2"],
+    compatibility: "Minecraft Bedrock 1.21.10x+",
   },
 }
 
 // ข้อมูลหมวดหมู่
 export const categoriesData = {
   addons: {
-    name: "แอดออน",
-    description: "เพิ่มฟีเจอร์ใหม่และความสามารถพิเศษให้กับเกม Minecraft",
+    name: "Add-ons",
+    description: "Add new features and special abilities to your Minecraft game",
     availableTags: ["BP", "BP & RP"],
     productIds: [22, 21, 20, 19, 18, 17, 14, 5, 4, 1],
   },
   "resource-packs": {
-    name: "รีซอสแพ็ค",
-    description: "เปลี่ยนการแสดงผลภาพ",
+    name: "Resource Packs",
+    description: "Change visual appearance and textures",
     availableTags: ["RP"],
     productIds: [3],
   },
   maps: {
-    name: "แมพ",
-    description: "โลกและสิ่งก่อสร้าง",
+    name: "Maps",
+    description: "Worlds and constructions for adventure",
     availableTags: ["Map"],
     productIds: [2, 7],
   },
   commands: {
-    name: "คอมมานด์",
-    description: "คำสั่งและระบบพื้นฐานทั่วไป",
+    name: "Commands",
+    description: "Commands and basic systems for gameplay",
     availableTags: ["CMD"],
     productIds: [8, 9, 10],
   },
   apps: {
-    name: "แอพเสริม",
-    description: "เครื่องมือช่วยเหลือนอกเกมสำหรับการจัดการและพัฒนา",
+    name: "Apps",
+    description: "External helper tools for management and development",
     availableTags: ["APP"],
     productIds: [11, 12, 13],
   },
   websites: {
-    name: "เว็บไซต์",
-    description: "ระบบเว็บไซต์ต่างๆตามความชอบ",
+    name: "Websites",
+    description: "Various website systems according to preferences",
     availableTags: ["WEB"],
     productIds: [15, 16],
   },
 }
 
 // ฟังก์ชันช่วยเหลือ
-export const getProductById = (id: number | string) => {
-  return productsData[id as keyof typeof productsData]
+export const getProductById = (id: number | string, t?: (key: string) => string) => {
+  const product = productsData[id as keyof typeof productsData]
+  if (!product) return null
+
+  if (t) {
+    return getTranslatedProduct(id, t)
+  }
+  return product
 }
 
-export const getProductsByCategory = (categorySlug: string) => {
+export const getProductsByCategory = (categorySlug: string, t?: (key: string) => string) => {
   const category = categoriesData[categorySlug as keyof typeof categoriesData]
   if (!category) return []
 
-  return category.productIds.map((id) => ({
-    id,
-    ...productsData[id as keyof typeof productsData],
-  }))
+  return category.productIds
+    .map((id) => {
+      const product = productsData[id as keyof typeof productsData]
+      if (!product) return null
+
+      const result = {
+        id,
+        ...product,
+      }
+
+      if (t) {
+        return {
+          ...result,
+          name: t(product.nameKey),
+          description: t(product.descriptionKey),
+          features: product.featuresKeys.map((key) => t(key)),
+        }
+      }
+
+      return result
+    })
+    .filter(Boolean)
 }
 
-export const getFeaturedProducts = () => {
-  // สินค้าแนะนำ (แอดออนที่มีจริง)
-  return [1, 4, 5, 14].map((id) => ({
-    id,
-    ...productsData[id as keyof typeof productsData],
-  }))
+export const getFeaturedProducts = (t?: (key: string) => string) => {
+  // สินค้าแนะนำ (แอดออนที่มีจริง - ไม่รวมสินค้าที่ยังไม่มี)
+  return [1, 4, 5, 14, 17, 18, 19, 20, 21, 22] // Only real products, exclude placeholder products
+    .map((id) => {
+      const product = productsData[id as keyof typeof productsData]
+      if (!product) return null
+
+      const result = {
+        id,
+        ...product,
+      }
+
+      if (t) {
+        const translatedProduct = {
+          ...result,
+          name: t(product.nameKey),
+          description: t(product.descriptionKey),
+          features: product.featuresKeys.map((key) => t(key)),
+        }
+
+        if (translatedProduct.name === "ยังไม่มีสินค้า" || translatedProduct.name === "No Products Yet") {
+          return null
+        }
+
+        return translatedProduct
+      }
+
+      return result
+    })
+    .filter(Boolean)
+    .slice(0, 4) // Limit to 4 products for featured section
 }
 
-export const getAllProducts = () => {
-  return Object.entries(productsData).map(([id, product]) => ({
-    id: Number(id),
-    ...product,
-  }))
+export const getAllProducts = (t?: (key: string) => string) => {
+  return Object.entries(productsData).map(([id, product]) => {
+    const result = {
+      id: Number(id),
+      ...product,
+    }
+
+    if (t) {
+      return {
+        ...result,
+        name: t(product.nameKey),
+        description: t(product.descriptionKey),
+        features: product.featuresKeys.map((key) => t(key)),
+      }
+    }
+
+    return result
+  })
 }
 
 // สำหรับ favorites page
-export const getProductsForFavorites = () => {
+export const getProductsForFavorites = (t?: (key: string) => string) => {
   const result: Record<string, any> = {}
   Object.entries(productsData).forEach(([id, product]) => {
     result[id] = {
-      name: product.name,
+      name: t ? t(product.nameKey) : product.nameKey,
       price: product.price,
       tags: product.tags,
       category: product.category,
@@ -477,4 +527,16 @@ export const getProductsForFavorites = () => {
     }
   })
   return result
+}
+
+export const getTranslatedProduct = (id: number | string, t: (key: string) => string) => {
+  const product = productsData[id as keyof typeof productsData]
+  if (!product) return null
+
+  return {
+    ...product,
+    name: t(product.nameKey),
+    description: t(product.descriptionKey),
+    features: product.featuresKeys.map((key) => t(key)),
+  }
 }
