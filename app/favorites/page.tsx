@@ -11,11 +11,14 @@ import { useScrollRestoration } from "@/hooks/use-scroll-restoration"
 import { ImageWithSkeleton } from "@/components/image-with-skeleton"
 import { getProductsForFavorites } from "@/lib/products-data"
 import { Footer } from "@/components/footer"
+import { useLanguage } from "@/contexts/language-context"
+import { LanguageToggle } from "@/components/language-toggle"
 
 export default function FavoritesPage() {
   const [favoriteIds, setFavoriteIds] = useState<string[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const { navigateBack } = useScrollRestoration()
+  const { t, formatPrice } = useLanguage()
 
   // ใช้ข้อมูลจาก products-data.ts
   const allProducts = getProductsForFavorites()
@@ -39,7 +42,7 @@ export default function FavoritesPage() {
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-500 mx-auto mb-4"></div>
-          <p className="text-gray-300">กำลังโหลด...</p>
+          <p className="text-gray-300">{t("ui.loading")}</p>
         </div>
       </div>
     )
@@ -66,10 +69,13 @@ export default function FavoritesPage() {
                 MineBit Store
               </h1>
             </Link>
-            <Button className="bg-red-600 hover:bg-red-700 text-white">
-              <Heart className="w-4 h-4 mr-2 fill-white" />
-              รายการที่ชอบ ({favoriteIds.length})
-            </Button>
+            <div className="flex items-center gap-3">
+              <LanguageToggle />
+              <Button className="bg-red-600 hover:bg-red-700 text-white">
+                <Heart className="w-4 h-4 mr-2 fill-white" />
+                {t("favorites")} ({favoriteIds.length})
+              </Button>
+            </div>
           </div>
         </div>
       </header>
@@ -79,28 +85,32 @@ export default function FavoritesPage() {
         <div className="flex items-center space-x-2 mb-8">
           <button onClick={navigateBack} className="text-red-400 hover:text-red-300 flex items-center cursor-pointer">
             <ArrowLeft className="w-4 h-4 mr-1" />
-            ย้อนกลับ
+            {t("nav.back")}
           </button>
           <span className="text-gray-500">/</span>
-          <span className="text-white">รายการที่ชอบ</span>
+          <span className="text-white">{t("favorites")}</span>
         </div>
 
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">รายการที่ชอบ</span>
+            <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+              {t("favorites.title")}
+            </span>
           </h1>
-          <p className="text-gray-300 text-lg">สินค้าที่คุณชื่นชอบทั้งหมด ({favoriteProducts.length} รายการ)</p>
+          <p className="text-gray-300 text-lg">
+            {t("favorites.count")} ({favoriteProducts.length} {t("favorites.items")})
+          </p>
         </div>
 
         {/* Favorites Content */}
         {favoriteProducts.length === 0 ? (
           <div className="text-center py-16">
             <Heart className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-gray-400 mb-2">ยังไม่มีสินค้าที่ชอบ</h2>
-            <p className="text-gray-500 mb-8">เริ่มเลือกสินค้าที่คุณชื่นชอบกันเถอะ!</p>
+            <h2 className="text-2xl font-bold text-gray-400 mb-2">{t("favorites.empty")}</h2>
+            <p className="text-gray-500 mb-8">{t("favorites.emptyDesc")}</p>
             <Link href="/">
-              <Button className="bg-red-600 hover:bg-red-700 text-white">เริ่มช้อปปิ้ง</Button>
+              <Button className="bg-red-600 hover:bg-red-700 text-white">{t("favorites.startShopping")}</Button>
             </Link>
           </div>
         ) : (
@@ -145,7 +155,7 @@ export default function FavoritesPage() {
                         <h3 className="text-lg font-semibold text-white group-hover:text-red-400 transition-colors line-clamp-1">
                           {product.name}
                         </h3>
-                        <span className="text-red-400 font-bold text-lg">฿{product.price}</span>
+                        <span className="text-red-400 font-bold text-lg">{formatPrice(product.price)}</span>
                       </div>
                       <p className="text-gray-400 text-sm">{product.category}</p>
                     </div>

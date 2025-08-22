@@ -7,36 +7,40 @@ import { ArrowLeft, MessageCircle, CreditCard, Download, CheckCircle, Heart } fr
 import Image from "next/image"
 import { useScrollRestoration } from "@/hooks/use-scroll-restoration"
 import { Footer } from "@/components/footer"
-
-const steps = [
-  {
-    icon: MessageCircle,
-    title: "1. ติดต่อทาง Discord",
-    description: "คลิกปุ่มด้านล่างเพื่อเข้าสู่เซิร์ฟเวอร์ Discord ของเรา",
-    detail: "พูดคุยกับทีมงานและแจ้งสินค้าที่ต้องการ",
-  },
-  {
-    icon: CreditCard,
-    title: "2. ชำระเงิน",
-    description: "โอนเงินตามราคาที่แจ้งไว้ในแต่ละสินค้า",
-    detail: "รองรับการชำระผ่าน ธนาคาร, TrueMoney, PromptPay",
-  },
-  {
-    icon: CheckCircle,
-    title: "3. ยืนยันการสั่งซื้อ",
-    description: "ส่งหลักฐานการโอนเงินให้ทีมงาน",
-    detail: "ทีมงานจะตรวจสอบและยืนยันคำสั่งซื้อ",
-  },
-  {
-    icon: Download,
-    title: "4. รับสินค้า",
-    description: "ดาวน์โหลดไฟล์หรือรับลิงค์สินค้า",
-    detail: "พร้อมคู่มือการติดตั้งและการใช้งาน",
-  },
-]
+import { useLanguage } from "@/contexts/language-context"
+import { LanguageToggle } from "@/components/language-toggle"
 
 export default function HowToOrderPage() {
   const { navigateBack } = useScrollRestoration()
+  const { t } = useLanguage()
+
+  const steps = [
+    {
+      icon: MessageCircle,
+      title: t("howto.step1.title"),
+      description: t("howto.step1.desc"),
+      detail: t("howto.step1.detail"),
+    },
+    {
+      icon: CreditCard,
+      title: t("howto.step2.title"),
+      description: t("howto.step2.desc"),
+      detail: t("howto.step2.detail"),
+    },
+    {
+      icon: CheckCircle,
+      title: t("howto.step3.title"),
+      description: t("howto.step3.desc"),
+      detail: t("howto.step3.detail"),
+    },
+    {
+      icon: Download,
+      title: t("howto.step4.title"),
+      description: t("howto.step4.desc"),
+      detail: t("howto.step4.detail"),
+    },
+  ]
+
   return (
     <div className="flex flex-col min-h-screen bg-black text-white">
       {/* Header */}
@@ -55,12 +59,15 @@ export default function HowToOrderPage() {
                 MineBit Store
               </h1>
             </Link>
-            <Link href="/favorites">
-              <Button className="bg-red-600 hover:bg-red-700 text-white">
-                <Heart className="w-4 h-4 mr-2" />
-                รายการที่ชอบ
-              </Button>
-            </Link>
+            <div className="flex items-center gap-3">
+              <LanguageToggle />
+              <Link href="/favorites">
+                <Button className="bg-red-600 hover:bg-red-700 text-white">
+                  <Heart className="w-4 h-4 mr-2" />
+                  {t("favorites")}
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -70,15 +77,15 @@ export default function HowToOrderPage() {
         <div className="flex items-center space-x-2 mb-8">
           <button onClick={navigateBack} className="text-red-400 hover:text-red-300 flex items-center cursor-pointer">
             <ArrowLeft className="w-4 h-4 mr-1" />
-            ย้อนกลับ
+            {t("nav.back")}
           </button>
           <span className="text-gray-500">/</span>
-          <span className="text-white">สั่งซื้อ</span>
+          <span className="text-white">{t("howto.breadcrumb")}</span>
         </div>
 
         {/* Page Header */}
         <div className="text-center mb-12">
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">สั่งซื้อง่ายๆเพียง 4 ขั้นตอนเพื่อรับสินค้าจากเรา</p>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">{t("howto.subtitle")}</p>
         </div>
 
         {/* Steps */}
@@ -112,17 +119,15 @@ export default function HowToOrderPage() {
               <div className="w-20 h-20 bg-gradient-to-r from-red-500 to-red-700 rounded-full flex items-center justify-center mx-auto mb-6">
                 <MessageCircle className="w-10 h-10 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-red-400 mb-4">พร้อมสั่งซื้อแล้ว?</h2>
-              <p className="text-gray-300 mb-6">
-                คลิกปุ่มด้านล่างเพื่อเข้าสู่เซิร์ฟเวอร์ Discord ของเรา และเริ่มต้นการสั่งซื้อสินค้าที่คุณต้องการ
-              </p>
+              <h2 className="text-2xl font-bold text-red-400 mb-4">{t("howto.ready")}</h2>
+              <p className="text-gray-300 mb-6">{t("howto.readyDesc")}</p>
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-8 py-3"
                 onClick={() => window.open("https://discord.gg/DztQe9Rv49", "_blank")}
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                เข้าสู่ Discord Server
+                {t("howto.joinDiscord")}
               </Button>
             </CardContent>
           </Card>
@@ -132,20 +137,20 @@ export default function HowToOrderPage() {
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="bg-gray-900/30 border-red-900/30">
             <CardContent className="p-6 text-center">
-              <h3 className="text-lg font-semibold text-red-400 mb-2">🔒 ปลอดภัย</h3>
-              <p className="text-gray-300 text-sm">การชำระเงินผ่านช่องทางที่ปลอดภัย พร้อมการยืนยันตัวตนจากทีมงาน</p>
+              <h3 className="text-lg font-semibold text-red-400 mb-2">{t("howto.secure")}</h3>
+              <p className="text-gray-300 text-sm">{t("howto.secureDesc")}</p>
             </CardContent>
           </Card>
           <Card className="bg-gray-900/30 border-red-900/30">
             <CardContent className="p-6 text-center">
-              <h3 className="text-lg font-semibold text-red-400 mb-2">⚡ รวดเร็ว</h3>
-              <p className="text-gray-300 text-sm">ประมวลผลคำสั่งซื้อและส่งมอบสินค้าภายใน 24 ชั่วโมง</p>
+              <h3 className="text-lg font-semibold text-red-400 mb-2">{t("howto.fast")}</h3>
+              <p className="text-gray-300 text-sm">{t("howto.fastDesc")}</p>
             </CardContent>
           </Card>
           <Card className="bg-gray-900/30 border-red-900/30">
             <CardContent className="p-6 text-center">
-              <h3 className="text-lg font-semibold text-red-400 mb-2">🎮 คุณภาพ</h3>
-              <p className="text-gray-300 text-sm">สินค้าทุกชิ้นผ่านการทดสอบและรับประกันคุณภาพ</p>
+              <h3 className="text-lg font-semibold text-red-400 mb-2">{t("howto.quality")}</h3>
+              <p className="text-gray-300 text-sm">{t("howto.qualityDesc")}</p>
             </CardContent>
           </Card>
         </div>
