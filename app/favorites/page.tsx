@@ -20,8 +20,7 @@ export default function FavoritesPage() {
   const { navigateBack } = useScrollRestoration()
   const { t, formatPrice } = useLanguage()
 
-  // ใช้ข้อมูลจาก products-data.ts
-  const allProducts = getProductsForFavorites()
+  const allProducts = getProductsForFavorites(t)
 
   useEffect(() => {
     // โหลดรายการที่ชอบจาก localStorage
