@@ -11,18 +11,8 @@ import { CategoryHeader } from "@/components/category-header"
 import { ProductGrid } from "@/components/product-grid"
 import { categoriesData, getProductsByCategory } from "@/lib/products-data"
 import { Footer } from "@/components/footer"
+import { useLanguage } from "@/contexts/language-context"
 import Head from "next/head"
-
-// คำอธิบายแท็ก
-const tagDescriptions = {
-  BP: "Behavior Pack - แอดออนที่ใช้แค่แพ็คดาต้าหรือ Behavior Pack เท่านั้น",
-  "BP & RP": "Behavior Pack & Resource Pack - แอดออนที่ใช้ทั้งแพ็คดาต้าและแพ็คภาพ",
-  RP: "Resource Pack - แพ็คที่เปลี่ยนเท็กซ์เจอร์และภาพในเกม",
-  Map: "แมพ - โลกและสถานที่ใหม่สำหรับการผจญภัย",
-  CMD: "Command - คำสั่งและฟังก์ชันพิเศษ",
-  APP: "Application - แอพพลิเคชันเสริมนอกเกม",
-  WEB: "Website - เว็บไซต์รูปแบบต่างๆที่สั่งทำ หรือเอกลักษณ์เฉพาะตามที่ลงขาย",
-}
 
 // SEO metadata สำหรับแต่ละหมวดหมู่
 const getCategoryMetadata = (slug: string) => {
@@ -74,11 +64,17 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
   const [showTagInfo, setShowTagInfo] = useState(false)
 
+  const { t, formatPrice } = useLanguage()
+
   const category = categoriesData[params.slug as keyof typeof categoriesData]
-  const products = getProductsByCategory(params.slug)
+  const products = getProductsByCategory(params.slug, t)
   const { navigateBack } = useScrollRestoration()
 
-  // SEO metadata
+  const getTagDescription = (tag: string) => {
+    const tagKey = tag.replace(" & ", "_").replace(" ", "_")
+    return t(`tag.${tagKey}`)
+  }
+
   const categoryMeta = getCategoryMetadata(params.slug)
 
   // รวบรวมแท็กทั้งหมดในหมวดนี้
@@ -123,9 +119,9 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
     return (
       <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-red-400 mb-4">ไม่พบหมวดหมู่</h1>
+          <h1 className="text-4xl font-bold text-red-400 mb-4">{t("category.notFound")}</h1>
           <Link href="/">
-            <Button className="bg-red-600 hover:bg-red-700">กลับหน้าหลัก</Button>
+            <Button className="bg-red-600 hover:bg-red-700">{t("product.backToHome")}</Button>
           </Link>
         </div>
       </div>
@@ -207,20 +203,20 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
       <div className="flex flex-col min-h-screen bg-black text-white">
         {/* Header */}
-        <CategoryHeader navigateBack={navigateBack} categoryName={category.name} />
+        <CategoryHeader navigateBack={navigateBack} categoryName={category.name} categorySlug={params.slug} />
 
         <div className="container mx-auto px-4 pb-8">
           {/* Sort Control */}
           <div className="mb-6">
             <Select value={sortBy} onValueChange={setSortBy}>
               <SelectTrigger className="w-48 bg-gray-900/50 border-red-900/30">
-                <SelectValue placeholder="เรียงตาม" />
+                <SelectValue placeholder={t("category.sortBy")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="newest">ใหม่ล่าสุด</SelectItem>
-                <SelectItem value="price-low">ราคาต่ำ - สูง</SelectItem>
-                <SelectItem value="price-high">ราคาสูง - ต่ำ</SelectItem>
-                <SelectItem value="name">ชื่อ A-Z</SelectItem>
+                <SelectItem value="newest">{t("category.sortNewest")}</SelectItem>
+                <SelectItem value="price-low">{t("category.sortPriceLow")}</SelectItem>
+                <SelectItem value="price-high">{t("category.sortPriceHigh")}</SelectItem>
+                <SelectItem value="name">{t("category.sortNameAZ")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -229,17 +225,17 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           <div className="mb-8">
             <h1 className="text-4xl font-bold mb-4">
               <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                {category.name}
+                {t(`category.${params.slug}.name`)}
               </span>
             </h1>
-            <p className="text-gray-300 text-lg max-w-2xl">{category.description}</p>
+            <p className="text-gray-300 text-lg max-w-2xl">{t(`category.${params.slug}.description`)}</p>
           </div>
 
           {/* Tags Filter */}
           {availableTags.length > 0 && (
             <div className="mb-6">
               <div className="flex items-center gap-3 mb-3">
-                <h3 className="text-lg font-semibold text-red-400">กรองตามแท็ก:</h3>
+                <h3 className="text-lg font-semibold text-red-400">{t("category.filterByTags")}:</h3>
                 <Button
                   variant="outline"
                   size="sm"
@@ -247,19 +243,19 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
                   className="border-red-900/30 text-gray-400 hover:bg-red-500/10"
                 >
                   <Info className="w-4 h-4 mr-1" />
-                  เกร็ดความรู้
+                  {t("category.tagKnowledge")}
                 </Button>
               </div>
 
               {/* Tag Info Panel */}
               {showTagInfo && (
                 <div className="mb-4 p-4 bg-gray-900/50 border border-red-900/30 rounded-lg">
-                  <h4 className="text-red-400 font-semibold mb-3">🎓 เกร็ดความรู้เกี่ยวกับแท็ก:</h4>
+                  <h4 className="text-red-400 font-semibold mb-3">{t("category.tagKnowledgeAbout")}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                     {availableTags.map((tag) => (
                       <div key={tag} className="flex items-start space-x-2">
                         <Badge className="bg-red-600/80 text-white text-xs flex-shrink-0">{tag}</Badge>
-                        <span className="text-gray-300">{tagDescriptions[tag as keyof typeof tagDescriptions]}</span>
+                        <span className="text-gray-300">{getTagDescription(tag)}</span>
                       </div>
                     ))}
                   </div>
@@ -287,10 +283,10 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
                     variant="outline"
                     size="sm"
                     onClick={clearFilters}
-                    className="border-red-900/30 text-gray-400"
+                    className="border-red-900/30 text-gray-400 bg-transparent"
                   >
                     <X className="w-4 h-4 mr-1" />
-                    ล้างตัวกรอง
+                    {t("category.clearFilters")}
                   </Button>
                 )}
               </div>
@@ -300,7 +296,9 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           {/* Selected Tags Display */}
           {selectedTags.length > 0 && (
             <div className="mb-6">
-              <p className="text-gray-400 text-sm mb-2">กรองแล้ว: {filteredAndSortedProducts.length} รายการ</p>
+              <p className="text-gray-400 text-sm mb-2">
+                {t("category.filtered")} {filteredAndSortedProducts.length} {t("category.items")}
+              </p>
               <div className="flex flex-wrap gap-2">
                 {selectedTags.map((tag) => (
                   <Badge key={tag} className="bg-red-600/80 text-white">
@@ -344,10 +342,10 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
           {filteredAndSortedProducts.length === 0 && selectedTags.length > 0 ? (
             <div className="text-center py-16">
               <Filter className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-              <h2 className="text-2xl font-bold text-gray-400 mb-2">ไม่พบสินค้า</h2>
-              <p className="text-gray-500 mb-4">ลองเปลี่ยนเงื่อนไขการกรองหรือล้างตัวกรอง</p>
+              <h2 className="text-2xl font-bold text-gray-400 mb-2">{t("category.noProducts")}</h2>
+              <p className="text-gray-500 mb-4">{t("category.changeFilter")}</p>
               <Button onClick={clearFilters} className="bg-red-600 hover:bg-red-700">
-                ล้างตัวกรอง
+                {t("category.clearFilters")}
               </Button>
             </div>
           ) : (
