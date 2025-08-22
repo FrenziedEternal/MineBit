@@ -9,63 +9,66 @@ import { useScrollRestoration } from "@/hooks/use-scroll-restoration"
 import { ImageWithSkeleton } from "@/components/image-with-skeleton"
 import { getFeaturedProducts } from "@/lib/products-data"
 import { Footer } from "@/components/footer"
-
-const categories = [
-  {
-    id: "addons",
-    name: "แอดออน",
-    description: "เพิ่มฟีเจอร์ใหม่ให้กับเกม",
-    icon: Puzzle,
-    count: 10,
-    gradient: "from-red-500 to-pink-600",
-  },
-  {
-    id: "resource-packs",
-    name: "รีซอสแพ็ค",
-    description: "เปลี่ยนการแสดงผลภาพ",
-    icon: Zap,
-    count: 1,
-    gradient: "from-red-600 to-orange-500",
-  },
-  {
-    id: "maps",
-    name: "แมพ",
-    description: "โลกและสิ่งก่อสร้าง",
-    icon: Map,
-    count: 2,
-    gradient: "from-red-500 to-red-700",
-  },
-  {
-    id: "commands",
-    name: "คอมมานด์",
-    description: "คำสั่งและระบบพื้นฐานทั่วไป",
-    icon: Code,
-    count: 3,
-    gradient: "from-pink-500 to-red-600",
-  },
-  {
-    id: "apps",
-    name: "แอพเสริม",
-    description: "เครื่องมือช่วยเหลือนอกเกม",
-    icon: Smartphone,
-    count: 3,
-    gradient: "from-red-700 to-red-900",
-  },
-  {
-    id: "websites",
-    name: "เว็บไซต์",
-    description: "ระบบเว็บไซต์ต่างๆตามความชอบ",
-    icon: Globe,
-    count: 2,
-    gradient: "from-red-500 to-red-800",
-  },
-]
+import { useLanguage } from "@/contexts/language-context"
+import { LanguageToggle } from "@/components/language-toggle"
 
 export default function HomePage() {
   useScrollRestoration()
+  const { t, formatPrice } = useLanguage()
 
   // ใช้ข้อมูลจาก products-data.ts
-  const featuredProducts = getFeaturedProducts()
+  const featuredProducts = getFeaturedProducts(t)
+
+  const categories = [
+    {
+      id: "addons",
+      name: t("categories.addons"),
+      description: t("categories.addons.desc"),
+      icon: Puzzle,
+      count: 10,
+      gradient: "from-red-500 to-pink-600",
+    },
+    {
+      id: "resource-packs",
+      name: t("categories.resource-packs"),
+      description: t("categories.resource-packs.desc"),
+      icon: Zap,
+      count: 1,
+      gradient: "from-red-600 to-orange-500",
+    },
+    {
+      id: "maps",
+      name: t("categories.maps"),
+      description: t("categories.maps.desc"),
+      icon: Map,
+      count: 2,
+      gradient: "from-red-500 to-red-700",
+    },
+    {
+      id: "commands",
+      name: t("categories.commands"),
+      description: t("categories.commands.desc"),
+      icon: Code,
+      count: 3,
+      gradient: "from-pink-500 to-red-600",
+    },
+    {
+      id: "apps",
+      name: t("categories.apps"),
+      description: t("categories.apps.desc"),
+      icon: Smartphone,
+      count: 3,
+      gradient: "from-red-700 to-red-900",
+    },
+    {
+      id: "websites",
+      name: t("categories.websites"),
+      description: t("categories.websites.desc"),
+      icon: Globe,
+      count: 2,
+      gradient: "from-red-500 to-red-800",
+    },
+  ]
 
   const randomizeCategory = () => {
     const categoryIds = ["addons", "resource-packs", "maps", "commands", "apps", "websites"]
@@ -144,12 +147,15 @@ export default function HomePage() {
                   MineBit Store
                 </h1>
               </Link>
-              <Link href="/favorites" onClick={handleLinkClick}>
-                <Button className="bg-red-600 hover:bg-red-700 text-white">
-                  <Heart className="w-4 h-4 mr-2" />
-                  รายการที่ชอบ
-                </Button>
-              </Link>
+              <div className="flex items-center gap-3">
+                <LanguageToggle />
+                <Link href="/favorites" onClick={handleLinkClick}>
+                  <Button className="bg-red-600 hover:bg-red-700 text-white">
+                    <Heart className="w-4 h-4 mr-2" />
+                    {t("favorites")}
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </header>
@@ -168,9 +174,7 @@ export default function HomePage() {
                 <br />
                 <span className="text-white">Store</span>
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                ร้านจำหน่ายสินค้าในเกม Minecraft Bedrock ในไทยที่คัดสรรสินค้าคุณภาพสูง พร้อมราคาย่อมเยาเป็นมิตรกับลูกค้า
-              </p>
+              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{t("hero.description")}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/terms-of-service" onClick={handleLinkClick}>
                   <Button
@@ -178,7 +182,7 @@ export default function HomePage() {
                     className="bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white px-8 py-3"
                   >
                     <FileText className="w-5 h-5 mr-2" />
-                    ข้อกำหนดการใช้บริการ
+                    {t("hero.terms")}
                   </Button>
                 </Link>
                 <Link href="/how-to-order" onClick={handleLinkClick}>
@@ -187,7 +191,7 @@ export default function HomePage() {
                     variant="outline"
                     className="border-red-500 text-red-400 hover:bg-red-500/10 px-8 py-3 bg-transparent"
                   >
-                    วิธีสั่งซื้อ
+                    {t("hero.howto")}
                   </Button>
                 </Link>
               </div>
@@ -199,7 +203,9 @@ export default function HomePage() {
         <section className="py-16 bg-gray-900/30">
           <div className="container mx-auto px-4">
             <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">หมวดหมู่สินค้า</span>
+              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                {t("categories.title")}
+              </span>
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -219,7 +225,9 @@ export default function HomePage() {
                             <h4 className="text-xl font-semibold text-white group-hover:text-red-400 transition-colors">
                               {category.name}
                             </h4>
-                            <p className="text-gray-400 text-sm">{category.count} รายการ</p>
+                            <p className="text-gray-400 text-sm">
+                              {category.count} {t("categories.items")}
+                            </p>
                           </div>
                         </div>
                         <p className="text-gray-300 text-sm">{category.description}</p>
@@ -236,7 +244,9 @@ export default function HomePage() {
         <section className="py-16">
           <div className="container mx-auto px-4">
             <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">สินค้าแนะนำ</span>
+              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                {t("featured.title")}
+              </span>
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
@@ -266,9 +276,9 @@ export default function HomePage() {
                         <h4 className="text-lg font-semibold text-white group-hover:text-red-400 transition-colors">
                           {product.name}
                         </h4>
-                        <span className="text-red-400 font-bold text-lg">฿{product.price}</span>
+                        <span className="text-red-400 font-bold text-lg">{formatPrice(product.price)}</span>
                       </div>
-                      <p className="text-gray-400 text-sm">{product.category}</p>
+                      <p className="text-gray-300 text-sm line-clamp-2">{product.description}</p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -281,7 +291,9 @@ export default function HomePage() {
         <section className="py-16 bg-gray-900/30">
           <div className="container mx-auto px-4">
             <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">รีวิวจากลูกค้า</span>
+              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
+                {t("reviews.title")}
+              </span>
             </h3>
 
             <div className="max-w-6xl mx-auto">

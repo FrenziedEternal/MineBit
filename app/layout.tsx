@@ -1,6 +1,7 @@
 import type React from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
+import { LanguageProvider } from "@/contexts/language-context"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -80,7 +81,7 @@ export const metadata = {
       "https://xv1t4wfzjkn6kzdb.public.blob.vercel-storage.com/logo/IMG_0699-RRFqZDmOBPBuboVbW5g0rj0XhGf0KN.png",
     ],
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -243,7 +244,9 @@ export default function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <div className="flex flex-col min-h-screen">{children}</div>
+        <LanguageProvider>
+          <div className="flex flex-col min-h-screen">{children}</div>
+        </LanguageProvider>
       </body>
     </html>
   )

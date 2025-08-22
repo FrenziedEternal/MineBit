@@ -147,3 +147,34 @@
     aspect-ratio: 16 / 9;
   }
 }
+
+/* Hide v0 branding elements that appear on deployed sites */
+/* Hide "Built with v0" button and similar branding elements */
+[data-v0-branding],
+[class*="v0-branding"],
+[class*="built-with-v0"],
+a[href*="v0.dev"],
+a[href*="v0.app"],
+div[style*="position: fixed"][style*="bottom"],
+div[style*="position: fixed"][style*="right"],
+iframe[src*="v0.dev"],
+iframe[src*="v0.app"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Additional selectors for common v0 branding patterns */
+.fixed.bottom-4.right-4,
+.fixed.bottom-6.right-6,
+.fixed.z-50[style*="bottom"],
+div[class*="fixed"][class*="bottom"][class*="right"] {
+  display: none !important;
+}
+
+/* Hide elements with v0 branding in title or alt attributes */
+*[title*="Built with v0"],
+*[alt*="Built with v0"] {
+  display: none !important;
+}
