@@ -1,6 +1,11 @@
+"use client"
+
 import { ImageWithSkeleton } from "@/components/image-with-skeleton"
+import { useLanguage } from "@/contexts/language-context"
 
 export function Footer() {
+  const { t } = useLanguage()
+
   return (
     <footer className="bg-gray-900/50 border-t border-red-900/30 py-8 mt-auto">
       <div className="container mx-auto px-4">
@@ -19,10 +24,8 @@ export function Footer() {
               MineBit Store
             </span>
           </div>
-          <p className="text-gray-400 text-sm">© 2025 MineBit Store. All rights reserved.</p>
-          <p className="text-gray-500 text-xs mt-2">
-            ร้านขายของ Minecraft Bedrock ของไทย | แอดออน แมพ รีซอสแพ็ค คอมมานด์ แอพเสริม
-          </p>
+          <p className="text-gray-400 text-sm">{t("footer.copyright")}</p>
+          <p className="text-gray-500 text-xs mt-2">{t("footer.tagline")}</p>
         </div>
       </div>
     </footer>

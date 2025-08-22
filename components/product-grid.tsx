@@ -1,7 +1,10 @@
+"use client"
+
 import Link from "next/link"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { SimpleImage } from "@/components/simple-image"
+import { useLanguage } from "@/contexts/language-context"
 
 interface Product {
   id: number
@@ -19,6 +22,8 @@ interface ProductGridProps {
 }
 
 export function ProductGrid({ products, viewMode }: ProductGridProps) {
+  const { t, formatPrice } = useLanguage()
+
   if (products.length === 0) {
     return (
       <div className="text-center py-16">
@@ -32,8 +37,8 @@ export function ProductGrid({ products, viewMode }: ProductGridProps) {
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-400 mb-2">ไม่พบสินค้า</h2>
-        <p className="text-gray-500 mb-4">ลองเปลี่ยนเงื่อนไขการกรองหรือล้างตัวกรอง</p>
+        <h2 className="text-2xl font-bold text-gray-400 mb-2">{t("category.noProducts")}</h2>
+        <p className="text-gray-500 mb-4">{t("category.changeFilter")}</p>
       </div>
     )
   }
@@ -71,7 +76,7 @@ export function ProductGrid({ products, viewMode }: ProductGridProps) {
                   <h3 className="text-lg font-semibold text-white group-hover:text-red-400 transition-colors line-clamp-1">
                     {product.name}
                   </h3>
-                  <span className="text-red-400 font-bold text-lg">฿{product.price}</span>
+                  <span className="text-red-400 font-bold text-lg">{formatPrice(product.price)}</span>
                 </div>
                 <p className="text-gray-400 text-sm line-clamp-2">{product.description}</p>
               </CardContent>
@@ -104,7 +109,7 @@ export function ProductGrid({ products, viewMode }: ProductGridProps) {
                         {product.name}
                       </h3>
                       <span className="text-red-400 font-bold text-lg md:text-xl flex-shrink-0 sm:ml-4">
-                        ฿{product.price}
+                        {formatPrice(product.price)}
                       </span>
                     </div>
                     <p className="text-gray-400 text-sm md:text-base line-clamp-2 md:line-clamp-3">

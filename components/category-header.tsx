@@ -4,13 +4,20 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Heart, ArrowLeft } from "lucide-react"
+import { useLanguage } from "@/contexts/language-context"
+import { LanguageToggle } from "@/components/language-toggle"
 
 interface CategoryHeaderProps {
   navigateBack: () => void
   categoryName: string
+  categorySlug?: string // Added categorySlug prop to get translated name
 }
 
-export function CategoryHeader({ navigateBack, categoryName }: CategoryHeaderProps) {
+export function CategoryHeader({ navigateBack, categoryName, categorySlug }: CategoryHeaderProps) {
+  const { t } = useLanguage()
+
+  const displayName = categorySlug ? t(`category.${categorySlug}.name`) : categoryName
+
   return (
     <>
       {/* Header */}
@@ -29,12 +36,15 @@ export function CategoryHeader({ navigateBack, categoryName }: CategoryHeaderPro
                 MineBit Store
               </h1>
             </Link>
-            <Link href="/favorites">
-              <Button className="bg-red-600 hover:bg-red-700 text-white">
-                <Heart className="w-4 h-4 mr-2" />
-                รายการที่ชอบ
-              </Button>
-            </Link>
+            <div className="flex items-center gap-3">
+              <LanguageToggle />
+              <Link href="/favorites">
+                <Button className="bg-red-600 hover:bg-red-700 text-white">
+                  <Heart className="w-4 h-4 mr-2" />
+                  {t("favorites")}
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -44,10 +54,10 @@ export function CategoryHeader({ navigateBack, categoryName }: CategoryHeaderPro
         <div className="flex items-center space-x-2 mb-8">
           <button onClick={navigateBack} className="text-red-400 hover:text-red-300 flex items-center cursor-pointer">
             <ArrowLeft className="w-4 h-4 mr-1" />
-            ย้อนกลับ
+            {t("nav.back")}
           </button>
           <span className="text-gray-500">/</span>
-          <span className="text-white">{categoryName}</span>
+          <span className="text-white">{displayName}</span>
         </div>
       </div>
     </>
