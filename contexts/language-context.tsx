@@ -44,6 +44,8 @@ const translations = {
     "categories.websites": "เว็บไซต์",
     "categories.websites.desc": "ระบบเว็บไซต์ต่างๆตามความชอบ",
     "categories.items": "รายการ",
+    "categories.locked": "ล็อคอยู่",
+    "categories.lockedDesc": "หมวดหมู่นี้ยังไม่เปิดให้บริการ",
 
     "category.addons.name": "แอดออน",
     "category.addons.description": "เพิ่มฟีเจอร์ใหม่และความสามารถพิเศษให้กับเกม Minecraft ของคุณ",
@@ -381,6 +383,8 @@ const translations = {
     "categories.websites": "Websites",
     "categories.websites.desc": "Various website systems as preferred",
     "categories.items": "items",
+    "categories.locked": "Locked",
+    "categories.lockedDesc": "This category is not yet available",
 
     "category.addons.name": "Add-ons",
     "category.addons.description": "Add new features and special abilities to your Minecraft game",
