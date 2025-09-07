@@ -166,6 +166,10 @@ export default function HomePage() {
           </div>
         </header>
 
+        <div className="bg-red-600/80 text-white py-2 overflow-hidden relative">
+          <div className="scrolling-text whitespace-nowrap">{t("banner.message")}</div>
+        </div>
+
         {/* Hero Section */}
         <section className="relative py-20 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-red-900/20 to-black/50"></div>
