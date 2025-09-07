@@ -1,10 +1,10 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Filter, Grid, List, X, Info } from "lucide-react"
+import { Filter, Grid, List, X, Info, Lock } from "lucide-react"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useScrollRestoration } from "@/hooks/use-scroll-restoration"
 import { CategoryHeader } from "@/components/category-header"
@@ -59,6 +59,11 @@ const getCategoryMetadata = (slug: string) => {
 }
 
 export default function CategoryPage({ params }: { params: { slug: string } }) {
+  const UNLOCK_ALL_CATEGORIES = false
+
+  const lockedCategories = ["maps", "commands", "apps", "websites"]
+  const isLocked = lockedCategories.includes(params.slug) && !UNLOCK_ALL_CATEGORIES
+
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [sortBy, setSortBy] = useState("newest")
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid")
@@ -69,6 +74,12 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
   const category = categoriesData[params.slug as keyof typeof categoriesData]
   const products = getProductsByCategory(params.slug, t)
   const { navigateBack } = useScrollRestoration()
+
+  useEffect(() => {
+    if (isLocked) {
+      window.location.href = "/"
+    }
+  }, [isLocked])
 
   const getTagDescription = (tag: string) => {
     const tagKey = tag.replace(" & ", "_").replace(" ", "_")
@@ -113,6 +124,21 @@ export default function CategoryPage({ params }: { params: { slug: string } }) {
 
   const clearFilters = () => {
     setSelectedTags([])
+  }
+
+  if (isLocked) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+        <div className="text-center">
+          <Lock className="w-16 h-16 text-red-400 mx-auto mb-4" />
+          <h1 className="text-4xl font-bold text-red-400 mb-4">{t("category.locked")}</h1>
+          <p className="text-gray-300 mb-6">{t("category.lockedMessage")}</p>
+          <Link href="/">
+            <Button className="bg-red-600 hover:bg-red-700">{t("product.backToHome")}</Button>
+          </Link>
+        </div>
+      </div>
+    )
   }
 
   if (!category) {
