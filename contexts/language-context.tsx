@@ -223,7 +223,7 @@ const translations = {
     "product.14.name": "Gacha Plus",
     "product.15.name": "รับทำเว็บไซต์ตามสั่ง",
     "product.16.name": "ระบบรีวิวแบบให้คะแนนดาว",
-    "product.17.name": "Female Core",
+    "product.17.name": "Bed Fella",
     "product.18.name": "ThaiTech Ring",
     "product.19.name": "BitCommands",
     "product.20.name": "MineBit Display",
@@ -250,7 +250,7 @@ const translations = {
     "product.14.description": "ระบบสุ่มแบบกาชาขั้นสูงที่มาพร้อมกับอัตราการสุ่มขั้นสูงและระบบไอเทมรับประกัน",
     "product.15.description": "รับทำเว็บไซต์ตามสั่งในรูปแบบต่างๆ ตามโครงการที่กำหนดและข้อตกลงที่ตกลงกัน",
     "product.16.description": "รับทำเว็บไซต์ตามสั่งในรูปแบบต่างๆ ตามโครงการที่กำหนดและข้อตกลงที่ตกลงกัน",
-    "product.17.description": "สกินผู้เล่นที่มีลักษณะหน้าอกโค้งมนและแอนิเมชันหน้าอกเด้งนุ่มนวล",
+    "product.17.description": "ศัลยกรรม บรรดาลร่างกายดั่งใจหวัง🔥",
     "product.18.description": "แหวนลายไทยเรืองแสงที่ส่องแสงสีแดงสว่าง ตำนานเล่าว่าแหวนวงนี้ไม่ชอบให้คนใส่นอน",
     "product.19.description": "เพิ่มคำสั่งใหม่ๆ ได้อย่างอิสระในโลกของคุณ เพื่อความสะดวกในการดำเนินการต่างๆ",
     "product.20.description": "แสดงตัวเลขความเสียหายและอีกมากมายโดยไม่ต้องใช้รีซอสแพ็คใดๆ",
@@ -315,6 +315,11 @@ const translations = {
     "product.17.features.3": "หน้าอกไม่เป็นบล็อก",
     "product.17.features.4": "แอนิเมชันหน้าอกเด้งเพื่อสร้างความน่าเกรงขาม",
     "product.17.features.5": "สามารถทำเป็นสกินเกราะในเกมได้",
+    "product.17.features.6": "กรอกตาซ้ายขวา",
+    "product.17.features.7": "เอียงหัวตามที่หัน",
+    "product.17.features.8": "พาร์ติเคิลตามคน smooth แบบไม่ใช้ player json",
+    "product.17.features.9": "อื่นๆเพิ่มเติมสอบถาม",
+    
 
     "product.18.features.0": "ชุดเกราะที่สวมใส่ได้สำหรับส่วนร่างกายใดก็ได้ เช่น หัว ตัว ขา เท้า",
     "product.18.features.1": "ไม่ใช้ player.json ในรีซอสแพ็ค",
@@ -554,7 +559,7 @@ const translations = {
     "product.14.name": "Gacha Plus",
     "product.15.name": "Custom Website Development",
     "product.16.name": "Star Rating Review System",
-    "product.17.name": "Female Core",
+    "product.17.name": "Bed Fella",
     "product.18.name": "ThaiTech Ring",
     "product.19.name": "BitCommands",
     "product.20.name": "MineBit Display",
@@ -583,7 +588,7 @@ const translations = {
       "Custom website development in various formats according to project brief and agreed specifications.",
     "product.16.description":
       "Custom website development in various formats according to project brief and agreed specifications.",
-    "product.17.description": "Player skins with rounded chest features and smooth bouncing chest animations.",
+    "product.17.description": "Body Modification – Reshape your form just the way you desire.🔥",
     "product.18.description":
       "Thai-patterned glowing ring that shines bright red light. Legend says this ring doesn't like its wearer to lie down.",
     "product.19.description": "Add new commands freely to your world for convenience in various operations.",
@@ -649,6 +654,10 @@ const translations = {
     "product.17.features.3": "Non-blocky chest appearance",
     "product.17.features.4": "Bouncy chest animation for intimidation effect",
     "product.17.features.5": "Can be made into in-game armor skin",
+    "product.17.features.6": "Left and right eye tracking",
+    "product.17.features.7": "Head tilting based on direction",
+    "product.17.features.8": "Smooth particle following without player json",
+    "product.17.features.9": "Additional features available upon inquiry",
 
     "product.18.features.0": "Wearable armor set for any body part like head, body, legs, feet",
     "product.18.features.1": "Does not use player.json in resource pack",
