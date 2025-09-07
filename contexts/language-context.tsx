@@ -227,7 +227,7 @@ const translations = {
     "product.18.name": "ThaiTech Ring",
     "product.19.name": "BitCommands",
     "product.20.name": "MineBit Display",
-    "product.21.name": "Ponytail Hairstyle",
+    "product.21.name": "ผมปลิวขยับและลื่นไหล",
     "product.22.name": "Great Amulets",
 
     // Product Descriptions
@@ -254,7 +254,7 @@ const translations = {
     "product.18.description": "แหวนลายไทยเรืองแสงที่ส่องแสงสีแดงสว่าง ตำนานเล่าว่าแหวนวงนี้ไม่ชอบให้คนใส่นอน",
     "product.19.description": "เพิ่มคำสั่งใหม่ๆ ได้อย่างอิสระในโลกของคุณ เพื่อความสะดวกในการดำเนินการต่างๆ",
     "product.20.description": "แสดงตัวเลขความเสียหายและอีกมากมายโดยไม่ต้องใช้รีซอสแพ็คใดๆ",
-    "product.21.description": "ผมปลิวและขยับลื่นไหล",
+    "product.21.description": "ผมที่พลิ้วไหวอย่างสง่างามให้รัศมีดุจราชินีแห่งดวงจันทร์",
     "product.22.description": "สวมใส่ไอเทมในช่องเครื่องรางได้ โดยช่องเครื่องรางแยกจากช่องไอเทมปกติ",
 
     // Product Features
@@ -593,7 +593,7 @@ const translations = {
       "Thai-patterned glowing ring that shines bright red light. Legend says this ring doesn't like its wearer to lie down.",
     "product.19.description": "Add new commands freely to your world for convenience in various operations.",
     "product.20.description": "Display damage numbers and much more without needing any resource packs.",
-    "product.21.description": "Flowing ponytail hair that sways gracefully, giving an aura like a moon queen.",
+    "product.21.description": "Hair that sways gracefully, giving an aura like a moon queen.",
     "product.22.description": "Wear items in amulet slots, with amulet slots separate from regular inventory slots.",
 
     // Product Features
