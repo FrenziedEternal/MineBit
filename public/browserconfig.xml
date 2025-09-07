@@ -2,9 +2,9 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square70x70logo src="https://xv1t4wfzjkn6kzdb.public.blob.vercel-storage.com/logo/IMG_0699-RRFqZDmOBPBuboVbW5g0rj0XhGf0KN.png"/>
-            <square150x150logo src="https://xv1t4wfzjkn6kzdb.public.blob.vercel-storage.com/logo/IMG_0699-RRFqZDmOBPBuboVbW5g0rj0XhGf0KN.png"/>
-            <square310x310logo src="https://xv1t4wfzjkn6kzdb.public.blob.vercel-storage.com/logo/IMG_0699-RRFqZDmOBPBuboVbW5g0rj0XhGf0KN.png"/>
+            <square70x70logo src="/minebit-store-logo-new.png"/>
+            <square150x150logo src="/minebit-store-logo-new.png"/>
+            <square310x310logo src="/minebit-store-logo-new.png"/>
             <TileColor>#000000</TileColor>
         </tile>
     </msapplication>
