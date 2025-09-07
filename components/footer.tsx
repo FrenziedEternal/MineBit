@@ -12,7 +12,7 @@ export function Footer() {
         <div className="text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <ImageWithSkeleton
-              src="https://xv1t4wfzjkn6kzdb.public.blob.vercel-storage.com/logo/IMG_0699-RRFqZDmOBPBuboVbW5g0rj0XhGf0KN.png"
+              src="/minebit-store-logo-new.png"
               alt="MineBit Store Logo"
               width={24}
               height={24}
