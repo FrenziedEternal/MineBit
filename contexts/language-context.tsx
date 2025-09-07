@@ -28,6 +28,7 @@ const translations = {
     "hero.description": "ร้านจำหน่ายสินค้าในเกม Minecraft Bedrock ในไทยที่คัดสรรสินค้าคุณภาพสูง พร้อมราคาย่อมเยาเป็นมิตรกับลูกค้า",
     "hero.terms": "ข้อกำหนดการใช้บริการ",
     "hero.howto": "วิธีสั่งซื้อ",
+    "banner.message": "📌 เว็บไซต์นี้เพื่อแสดงสินค้าตัวอย่างเท่านั้น เข้าร่วมกลุ่ม Discord ของเราเพื่อติดต่อสั่งซื้อสินค้าต่างๆ",
 
     // Categories
     "categories.title": "หมวดหมู่สินค้า",
@@ -367,6 +368,7 @@ const translations = {
       "Thailand's premier Minecraft Bedrock digital store offering high-quality products with affordable prices and excellent customer service",
     "hero.terms": "Terms of Service",
     "hero.howto": "How to Order",
+    "banner.message": "📌 This website is for product showcase only. Join our Discord group to contact us for purchasing various products",
 
     // Categories
     "categories.title": "Product Categories",
