@@ -390,7 +390,7 @@ export const categoriesData = {
   addons: {
     name: "Add-ons",
     description: "Add new features and special abilities to your Minecraft game",
-    availableTags: ["BP", "BP & RP"],
+    availableTags: ["BP", "BP & RP", "Beta-API", "No Beta-API"],
     productIds: [17, 21, 20, 19, 18, 22, 14, 5, 4, 1],
   },
   "resource-packs": {
