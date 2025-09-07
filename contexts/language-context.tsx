@@ -223,11 +223,11 @@ const translations = {
     "product.14.name": "Gacha Plus",
     "product.15.name": "รับทำเว็บไซต์ตามสั่ง",
     "product.16.name": "ระบบรีวิวแบบให้คะแนนดาว",
-    "product.17.name": "Bed Fella",
+    "product.17.name": "Bed Fella | ร่างกาย",
     "product.18.name": "ThaiTech Ring",
     "product.19.name": "BitCommands",
     "product.20.name": "MineBit Display",
-    "product.21.name": "ผมปลิวขยับและลื่นไหล",
+    "product.21.name": "Bed Fella | ผมปลิว",
     "product.22.name": "Great Amulets",
 
     // Product Descriptions
@@ -559,11 +559,11 @@ const translations = {
     "product.14.name": "Gacha Plus",
     "product.15.name": "Custom Website Development",
     "product.16.name": "Star Rating Review System",
-    "product.17.name": "Bed Fella",
+    "product.17.name": "Bed Fella | Body",
     "product.18.name": "ThaiTech Ring",
     "product.19.name": "BitCommands",
     "product.20.name": "MineBit Display",
-    "product.21.name": "Smooth Hair Movement",
+    "product.21.name": "Bed Fella | Smooth Hair Movement",
     "product.22.name": "Great Amulets",
 
     // Product Descriptions
