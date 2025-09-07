@@ -290,6 +290,7 @@ export const productsData = {
       "/images/thaitech-ring4.png",
       "/images/thaitech-ring5.png",
       "https://youtu.be/sHYUvObW3gU?si=SD8ZvvXH9WctXv0O",
+      "https://youtu.be/UuBSzVrZd_c",
     ],
     descriptionKey: "product.18.description",
     featuresKeys: [
