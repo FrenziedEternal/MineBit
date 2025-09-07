@@ -3,7 +3,7 @@ export const productsData = {
   1: {
     nameKey: "product.1.name",
     price: 300,
-    tags: ["BP", "No_Beta-API"],
+    tags: ["BP", "No Beta-API"],
     category: "Add-ons",
     author: "BarryAroy",
     images: [
@@ -57,7 +57,7 @@ export const productsData = {
   4: {
     nameKey: "product.4.name",
     price: 300,
-    tags: ["BP", "No_Beta-API"],
+    tags: ["BP", "No Beta-API"],
     category: "Add-ons",
     author: "BarryAroy",
     images: [
@@ -75,7 +75,7 @@ export const productsData = {
   5: {
     nameKey: "product.5.name",
     price: 300,
-    tags: ["BP", "No_Beta-API"],
+    tags: ["BP", "No Beta-API"],
     category: "Add-ons",
     author: "BarryAroy",
     images: [
@@ -181,7 +181,7 @@ export const productsData = {
   14: {
     nameKey: "product.14.name",
     price: 250,
-    tags: ["BP", "No_Beta-API"],
+    tags: ["BP", "No Beta-API"],
     category: "Add-ons",
     author: "BarryAroy",
     images: [
@@ -369,7 +369,7 @@ export const productsData = {
   22: {
     nameKey: "product.22.name",
     price: 100,
-    tags: ["BP & RP", "No_Beta-API"],
+    tags: ["BP & RP", "No Beta-API"],
     category: "Add-ons",
     author: "BarryAroy",
     images: [
