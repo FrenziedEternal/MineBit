@@ -345,14 +345,13 @@ export const productsData = {
   },
   21: {
     nameKey: "product.21.name",
-    price: 75,
+    price: "???",
     tags: ["BP & RP"],
     category: "Add-ons",
     author: "BarryAroy & Thaideity",
     images: [
       "/images/ponytail-cover.png",
       "/images/ponytail1.png",
-      "/images/ponytail2.png",
       "/images/ponytail3.png",
       "/images/ponytail4.png",
       "https://youtu.be/8r7KW4dY53M",
