@@ -55,7 +55,7 @@ export default function TermsOfServicePage() {
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-2">
               <Image
-                src="https://xv1t4wfzjkn6kzdb.public.blob.vercel-storage.com/logo/IMG_0699-RRFqZDmOBPBuboVbW5g0rj0XhGf0KN.png"
+                src="/minebit-store-logo-new.png"
                 alt="MineBit Store Logo"
                 width={32}
                 height={32}
