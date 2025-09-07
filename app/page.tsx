@@ -142,7 +142,7 @@ export default function HomePage() {
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center space-x-2">
                 <ImageWithSkeleton
-                  src="/logo-new.png"
+                  src="/minebit-store-logo-new.png"
                   alt="MineBit Store - ร้านขายของ Minecraft Bedrock ของไทย"
                   width={32}
                   height={32}
