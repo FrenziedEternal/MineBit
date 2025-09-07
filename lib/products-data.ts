@@ -260,7 +260,7 @@ export const productsData = {
     tags: ["BP & RP"],
     category: "Add-ons",
     author: "BarryAroy & Thaideity",
-    images: ["/images/female-core-cover.png", "/images/female-core-promo.png", "https://youtu.be/PE3XG_Uvss0"],
+    images: ["/images/female-core-cover.png", "/images/bed-bella1.png", "/images/bed-bella2.png", "/images/bed-bella3.png", "https://youtu.be/XoBbbLyqyMA","https://youtu.be/sRCi1YnLX7s","https://youtu.be/olhNIGaBCBU","https://youtu.be/ScNWTzUEwTE","https://youtu.be/xtvTQN9uMdA", "https://youtu.be/PE3XG_Uvss0"],
     descriptionKey: "product.17.description",
     featuresKeys: [
       "product.17.features.0",
