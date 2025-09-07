@@ -254,7 +254,7 @@ const translations = {
     "product.18.description": "แหวนลายไทยเรืองแสงที่ส่องแสงสีแดงสว่าง ตำนานเล่าว่าแหวนวงนี้ไม่ชอบให้คนใส่นอน",
     "product.19.description": "เพิ่มคำสั่งใหม่ๆ ได้อย่างอิสระในโลกของคุณ เพื่อความสะดวกในการดำเนินการต่างๆ",
     "product.20.description": "แสดงตัวเลขความเสียหายและอีกมากมายโดยไม่ต้องใช้รีซอสแพ็คใดๆ",
-    "product.21.description": "ผมหางม้าที่ไหวสะบัดอย่างสง่างาม ให้ออร่าเหมือนราชินีแห่งดวงจันทร์",
+    "product.21.description": "ผมปลิวและขยับลื่นไหล",
     "product.22.description": "สวมใส่ไอเทมในช่องเครื่องรางได้ โดยช่องเครื่องรางแยกจากช่องไอเทมปกติ",
 
     // Product Features
@@ -563,7 +563,7 @@ const translations = {
     "product.18.name": "ThaiTech Ring",
     "product.19.name": "BitCommands",
     "product.20.name": "MineBit Display",
-    "product.21.name": "Ponytail Hairstyle",
+    "product.21.name": "Smooth Hair Movement",
     "product.22.name": "Great Amulets",
 
     // Product Descriptions
