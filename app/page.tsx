@@ -166,7 +166,7 @@ export default function HomePage() {
           </div>
         </header>
 
-        <div className="bg-red-600/80 text-white py-2 overflow-hidden relative">
+        <div className="bg-red-500/20 text-white py-2 overflow-hidden relative">
           <div className="scrolling-text whitespace-nowrap">{t("banner.message")}</div>
         </div>
 
