@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Heart, Zap, Map, Code, Puzzle, Smartphone, FileText, Globe } from "lucide-react"
+import { Heart, Zap, Map, Code, Puzzle, Smartphone, FileText, Globe, Key } from "lucide-react"
 import { useScrollRestoration } from "@/hooks/use-scroll-restoration"
 import { ImageWithSkeleton } from "@/components/image-with-skeleton"
 import { getFeaturedProducts } from "@/lib/products-data"
@@ -13,11 +13,13 @@ import { useLanguage } from "@/contexts/language-context"
 import { LanguageToggle } from "@/components/language-toggle"
 
 export default function HomePage() {
+  const UNLOCK_ALL_CATEGORIES = false
+
   useScrollRestoration()
   const { t, formatPrice } = useLanguage()
 
   // ใช้ข้อมูลจาก products-data.ts
-  const featuredProducts = getFeaturedProducts(t)
+  const featuredProducts = getFeaturedProducts()
 
   const categories = [
     {
@@ -27,6 +29,7 @@ export default function HomePage() {
       icon: Puzzle,
       count: 10,
       gradient: "from-red-500 to-pink-600",
+      locked: false, // Added locked property
     },
     {
       id: "resource-packs",
@@ -35,6 +38,7 @@ export default function HomePage() {
       icon: Zap,
       count: 1,
       gradient: "from-red-600 to-orange-500",
+      locked: false, // Added locked property
     },
     {
       id: "maps",
@@ -43,6 +47,7 @@ export default function HomePage() {
       icon: Map,
       count: 2,
       gradient: "from-red-500 to-red-700",
+      locked: true, // Locked category
     },
     {
       id: "commands",
@@ -51,6 +56,7 @@ export default function HomePage() {
       icon: Code,
       count: 3,
       gradient: "from-pink-500 to-red-600",
+      locked: true, // Locked category
     },
     {
       id: "apps",
@@ -59,6 +65,7 @@ export default function HomePage() {
       icon: Smartphone,
       count: 3,
       gradient: "from-red-700 to-red-900",
+      locked: true, // Locked category
     },
     {
       id: "websites",
@@ -67,6 +74,7 @@ export default function HomePage() {
       icon: Globe,
       count: 2,
       gradient: "from-red-500 to-red-800",
+      locked: true, // Locked category
     },
   ]
 
@@ -134,7 +142,7 @@ export default function HomePage() {
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center space-x-2">
                 <ImageWithSkeleton
-                  src="/minebit-store-logo-new.png"
+                  src="/logo-new.png"
                   alt="MineBit Store - ร้านขายของ Minecraft Bedrock ของไทย"
                   width={32}
                   height={32}
@@ -143,9 +151,7 @@ export default function HomePage() {
                   loading="eager"
                   sizes="32px"
                 />
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                  MineBit Store
-                </h1>
+                <h1 className="text-2xl font-bold text-red-400">MineBit Store</h1>
               </Link>
               <div className="flex items-center gap-3">
                 <LanguageToggle />
@@ -168,13 +174,11 @@ export default function HomePage() {
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center max-w-4xl mx-auto">
               <h2 className="text-5xl md:text-7xl font-bold mb-6">
-                <span className="bg-gradient-to-r from-red-400 via-red-500 to-red-600 bg-clip-text text-transparent">
-                  MineBit
-                </span>
+                <span className="text-red-400">MineBit</span>
                 <br />
                 <span className="text-white">Store</span>
               </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">{t("hero.description")}</p>
+              <p className="text-xl text-gray-100 mb-8 max-w-2xl mx-auto">{t("hero.description")}</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/terms-of-service" onClick={handleLinkClick}>
                   <Button
@@ -202,15 +206,37 @@ export default function HomePage() {
         {/* Categories */}
         <section className="py-16 bg-gray-900/30">
           <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                {t("categories.title")}
-              </span>
-            </h3>
+            <h3 className="text-3xl font-bold text-center mb-12 text-red-400">{t("categories.title")}</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category) => {
                 const IconComponent = category.icon
+                const isLocked = category.locked && !UNLOCK_ALL_CATEGORIES // Check if category is locked
+
+                if (isLocked) {
+                  return (
+                    <Card key={category.id} className="bg-gray-900/50 border-red-900/30 opacity-60 cursor-not-allowed">
+                      <CardContent className="p-6">
+                        <div className="flex items-center space-x-4 mb-4">
+                          <div
+                            className={`w-12 h-12 rounded-lg bg-gradient-to-r ${category.gradient} flex items-center justify-center relative`}
+                          >
+                            <IconComponent className="w-6 h-6 text-white opacity-50" />
+                            <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-600 rounded-full flex items-center justify-center">
+                              <Key className="w-3 h-3 text-white" />
+                            </div>
+                          </div>
+                          <div>
+                            <h4 className="text-xl font-semibold text-gray-400">{category.name}</h4>
+                            <p className="text-gray-500 text-sm">🔒 {t("categories.locked")}</p>
+                          </div>
+                        </div>
+                        <p className="text-gray-400 text-sm">{t("categories.lockedDesc")}</p>
+                      </CardContent>
+                    </Card>
+                  )
+                }
+
                 return (
                   <Link key={category.id} href={`/category/${category.id}`} onClick={handleLinkClick}>
                     <Card className="bg-gray-900/50 border-red-900/30 hover:border-red-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 group cursor-pointer">
@@ -225,12 +251,12 @@ export default function HomePage() {
                             <h4 className="text-xl font-semibold text-white group-hover:text-red-400 transition-colors">
                               {category.name}
                             </h4>
-                            <p className="text-gray-400 text-sm">
+                            <p className="text-gray-200 text-sm">
                               {category.count} {t("categories.items")}
                             </p>
                           </div>
                         </div>
-                        <p className="text-gray-300 text-sm">{category.description}</p>
+                        <p className="text-gray-100 text-sm">{category.description}</p>
                       </CardContent>
                     </Card>
                   </Link>
@@ -243,11 +269,7 @@ export default function HomePage() {
         {/* Featured Products */}
         <section className="py-16">
           <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                {t("featured.title")}
-              </span>
-            </h3>
+            <h3 className="text-3xl font-bold text-center mb-12 text-red-400">{t("featured.title")}</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
               {featuredProducts.map((product) => (
@@ -278,7 +300,7 @@ export default function HomePage() {
                         </h4>
                         <span className="text-red-400 font-bold text-lg">{formatPrice(product.price)}</span>
                       </div>
-                      <p className="text-gray-300 text-sm line-clamp-2">{product.description}</p>
+                      <p className="text-gray-200 text-sm">{product.category}</p>
                     </CardContent>
                   </Card>
                 </Link>
@@ -290,11 +312,7 @@ export default function HomePage() {
         {/* Reviews Section */}
         <section className="py-16 bg-gray-900/30">
           <div className="container mx-auto px-4">
-            <h3 className="text-3xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-red-400 to-red-600 bg-clip-text text-transparent">
-                {t("reviews.title")}
-              </span>
-            </h3>
+            <h3 className="text-3xl font-bold text-center mb-12 text-red-400">{t("reviews.title")}</h3>
 
             <div className="max-w-6xl mx-auto">
               <div className="bg-gray-900/50 border border-red-900/30 rounded-lg overflow-hidden">
