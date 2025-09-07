@@ -588,7 +588,7 @@ const translations = {
       "Custom website development in various formats according to project brief and agreed specifications.",
     "product.16.description":
       "Custom website development in various formats according to project brief and agreed specifications.",
-    "product.17.description": "Body Modification – Reshape your form just the way you desire.🔥",
+    "product.17.description": "Body Modification – Reshape your form just the way you desire🔥",
     "product.18.description":
       "Thai-patterned glowing ring that shines bright red light. Legend says this ring doesn't like its wearer to lie down.",
     "product.19.description": "Add new commands freely to your world for convenience in various operations.",
