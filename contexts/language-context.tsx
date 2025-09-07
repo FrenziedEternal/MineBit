@@ -108,6 +108,8 @@ const translations = {
     "tag.CMD": "Command - คำสั่งและฟังก์ชันพิเศษ",
     "tag.APP": "Application - แอพพลิเคชันเสริมนอกเกม",
     "tag.WEB": "Website - เว็บไซต์รูปแบบต่างๆที่สั่งทำ หรือเอกลักษณ์เฉพาะตามที่ลงขาย",
+    "tag.Beta-API": "Beta-API - ต้องเปิดใช้งาน Experimental ที่ชื่อว่า Beta-API",
+    "tag.No_Beta-API": "No Beta-API - ไม่ต้องเปิดใช้งาน Experimental ใดๆ",
 
     // Favorites Page
     "favorites.title": "รายการที่ชอบ",
@@ -443,6 +445,8 @@ const translations = {
     "tag.CMD": "Command - Commands and special functions",
     "tag.APP": "Application - External supplementary applications",
     "tag.WEB": "Website - Various website formats made to order or unique characteristics as sold",
+    "tag.Beta-API": "Beta-API - Requires enabling Experimental feature called Beta-API",
+    "tag.No_Beta-API": "No Beta-API - Does not require enabling any Experimental features",
 
     // Favorites Page
     "favorites.title": "Favorites",
