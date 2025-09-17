@@ -18,7 +18,7 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 const translations = {
   th: {
     // Header & Navigation
-    favorites: "รายการที่ชอบ",
+    favorites: "ชื่นชอบ",
     language: "ภาษา",
     "nav.back": "ย้อนกลับ",
     "nav.home": "หน้าหลัก",
@@ -357,7 +357,7 @@ const translations = {
   },
   en: {
     // Header & Navigation
-    favorites: "Favorites",
+    favorites: "Favs",
     language: "Language",
     "nav.back": "Go Back",
     "nav.home": "Home",
